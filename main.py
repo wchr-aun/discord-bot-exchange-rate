@@ -20,7 +20,8 @@ async def on_ready():
 @tasks.loop(seconds=TIME_LOOP)
 async def ping_gpb_thb_rate():
     channel = client.get_channel(DISCORD_RATE_CHANNEL_ID)
-    rate = exchange_client.get_rates_thb()
+    # rate = exchange_client.get_rates_thb()
+    rate = 5
     now = datetime.now()
 
     current_time = now.strftime("%H:%M:%S")
@@ -28,17 +29,9 @@ async def ping_gpb_thb_rate():
         await channel.send('Error getting rate')
         return
     
-    members = client.get_all_members()
-    ping_list = []
-    for member in members:
-        rate_notification = firebase_client.get_profile_rates(member.id)
-        if member.id == client.user.id:
-            continue
-        if rate_notification <= rate:
-            ping_list.append(f'<@{member.id}>')
-
-    ping = reduce(lambda acc, val: f'{acc} {val}', ping_list)
-    await channel.send(f'🕛 {current_time} - The exchange rate is **{rate} THB/GBP**\n\n[cc. {ping}]')
+    ping_list = firebase_client.get_profile_rates_less_than(rate)
+    ping = reduce(lambda acc, member_id:  f'{acc} <@{member_id}>', ping_list, '\n\ncc.') if len(ping_list) != 0 else ''
+    await channel.send(f'🕛 {current_time} - The exchange rate is **{rate} THB/GBP**{ping}')
 
 @client.event
 async def on_message(message):

@@ -20,3 +20,7 @@ class Firebase:
             return doc.to_dict().get('rate')
         else:
             return float('inf')
+        
+    def get_profile_rates_less_than(self, rate: float) -> list:
+        docs = self.db.collection(u'profiles').where(u'rate', u'<=', rate).stream()
+        return [doc.id for doc in docs]
