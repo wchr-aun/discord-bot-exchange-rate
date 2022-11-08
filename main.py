@@ -59,7 +59,8 @@ async def on_message(message):
 
 @ping_gpb_thb_rate.before_loop
 async def before_loop():
-    wait_time = datetime.utcnow().timestamp() % (EVERY_THREE_HOURS)
+    wait_time = EVERY_THREE_HOURS - datetime.utcnow().timestamp() % (EVERY_THREE_HOURS)
+    print(f'Waiting {wait_time} seconds...')
     await asyncio.sleep(wait_time)
     print('Finished waiting')
 
