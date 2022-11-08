@@ -1,62 +1,73 @@
-import os
-
 import discord
-from discord.ext import tasks
-from dotenv import load_dotenv
-import requests
+import asyncio
+from functools import reduce
 from datetime import datetime
+from discord.ext import tasks
+from exchange_api import ExchangeAPI
+from firebase import Firebase
+from setup import *
 
-load_dotenv()
-TOKEN = os.getenv('DISCORD_TOKEN')
-GUILD = os.getenv('DISCORD_GUILD')
-EXCHANGE_API = os.getenv('EXCHANGE_API')
-DISCORD_ID = os.getenv('DISCORD_ID')
-CHANNEL_ID = int(os.getenv('DISCORD_CHANNEL_ID'))
-
-TIME_LOOP = 24 * 60 * 60 / (250 // 30)
-
-client = discord.Client(intents=discord.Intents.default())
-exchange_url = 'https://api.apilayer.com/exchangerates_data/latest?symbols=THB&base=GBP'
-
-def get_gbp_to_thb():
-  payload = {}
-  headers= {
-    "apikey": EXCHANGE_API
-  }
-
-  response = requests.request("GET", exchange_url, headers=headers, data = payload)
-
-  status_code = response.status_code
-  if status_code != 200:
-    return None
-  return response.json()
-
-def get_rates_thb():
-  rates = get_gbp_to_thb()
-  if rates is None:
-    return None
-  return rates['rates']['THB']
+client = discord.Client(intents=discord.Intents.all())
+exchange_client = ExchangeAPI(EXCHANGE_API)
+firebase_client = Firebase(FIREBASE_SERVICE_ACCOUNT)
 
 @client.event
 async def on_ready():
-
-    print(f'Logged in as {client.user.name}')
-    channel = client.get_channel(CHANNEL_ID)
-    await channel.send('Bot is ready!')
+    print(f'Logged in as {client.user.name}.')
+    print('Starting...')
     ping_gpb_thb_rate.start()
 
 @tasks.loop(seconds=TIME_LOOP)
 async def ping_gpb_thb_rate():
-    channel = client.get_channel(CHANNEL_ID)
-    rate = get_rates_thb()
+    channel = client.get_channel(DISCORD_RATE_CHANNEL_ID)
+    rate = exchange_client.get_rates_thb()
     now = datetime.now()
 
     current_time = now.strftime("%H:%M:%S")
     if rate is None:
         await channel.send('Error getting rate')
         return
+    
+    members = client.get_all_members()
+    ping_list = []
+    for member in members:
+        rate_notification = firebase_client.get_profile_rates(member.id)
+        if member.id == client.user.id:
+            continue
+        if rate_notification <= rate:
+            ping_list.append(f'<@{member.id}>')
 
-    ping = f'<@{DISCORD_ID}>' if rate >= 44 else ''
-    await channel.send(f'{current_time} - GBP to THB rate is {rate} {ping}')
+    ping = reduce(lambda acc, val: f'{acc} {val}', ping_list)
+    await channel.send(f'🕛 {current_time} - The exchange rate is **{rate} THB/GBP**\n\n[cc. {ping}]')
+
+@client.event
+async def on_message(message):
+    if message.channel.id != DISCORD_SETTING_CHANNEL_ID or message.author.id == client.user.id:
+        return
+    if not message.content.startswith('!rate'):
+        await message.channel.send(INVALID_SETTING_MESSAGE)
+        return
+    if len(message.content.split(' ')) == 1:
+        await message.channel.send(INVALID_SETTING_MESSAGE)
+        return
+    
+    profile_id = message.author.id
+    command = message.content.split(' ')[1]
+    if command == 'set' and len(message.content.split(' ')) == 3:
+        rate = float(message.content.split(' ')[2])
+        firebase_client.set_profile_rates(profile_id, rate)
+        await message.channel.send(f'<@{profile_id}>\'s rate notification is set to {rate} THB/GBP 💰')
+    elif command == 'get':
+        rate = firebase_client.get_profile_rates(profile_id)
+        await message.channel.send(f'<@{profile_id}>\'s rate notification is {rate} THB/GBP 💰')
+    else:
+        await message.channel.send(INVALID_SETTING_MESSAGE)
+    
+
+@ping_gpb_thb_rate.before_loop
+async def before_loop():
+    wait_time = datetime.utcnow().timestamp() % (EVERY_THREE_HOURS)
+    await asyncio.sleep(wait_time)
+    print('Finished waiting')
 
 client.run(TOKEN)
