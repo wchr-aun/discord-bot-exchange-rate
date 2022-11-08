@@ -20,8 +20,7 @@ async def on_ready():
 @tasks.loop(seconds=TIME_LOOP)
 async def ping_gpb_thb_rate():
     channel = client.get_channel(DISCORD_RATE_CHANNEL_ID)
-    # rate = exchange_client.get_rates_thb()
-    rate = 5
+    rate = exchange_client.get_rates_thb()
     now = datetime.now()
 
     current_time = now.strftime("%H:%M:%S")
