@@ -10,9 +10,9 @@ jobs:
       - name: Deploy to DigitalOcean Droplet
         uses: appleboy/ssh-action@master
         with:
-          host: ${{secrets.HOST}}
-          username: ${{secrets.USERNAME}}
-          key: ${{secrets.KEY}}
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.KEY }}
           script: |
             kill $(ps aux | grep -i '[p]ython3 main.py' | awk '{print $2}')
             cd discord-bot-exchange-rate
