@@ -15,8 +15,9 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.KEY }}
           script: |
+            kill $(ps aux | grep -i '[p]ython3 main.py' | awk '{print $2}')
             cd discord-bot-exchange-rate
             rm nohup.out
             git pull
             pip install -r requirements.txt
-            nohup python3 main.py &
+            nohup python3 main.py > nohup.out 2>&1 </dev/null &
