@@ -1,5 +1,6 @@
 import discord
 import asyncio
+import time
 from functools import reduce
 from datetime import datetime
 from discord.ext import tasks
@@ -20,14 +21,16 @@ async def on_ready():
 @tasks.loop(seconds=TIME_LOOP)
 async def ping_gpb_thb_rate():
     channel = client.get_channel(DISCORD_RATE_CHANNEL_ID)
-    rate = exchange_client.get_rates_thb()
-    now = datetime.now()
-
-    current_time = now.strftime("%H:%M:%S")
-    if rate is None:
-        await channel.send('Error getting rate')
-        return
     
+    while True:
+        rate = exchange_client.get_rates_thb()
+        if rate is not None:
+            break
+        await channel.send('⚠️ Had trouble getting rate... Retrying in 1 minute 🕛')
+        time.sleep(60)
+    
+    now = datetime.now()
+    current_time = now.strftime("%H:%M:%S")
     ping_list = firebase_client.get_profile_rates_less_than(rate)
     ping = reduce(lambda acc, member_id:  f'{acc} <@{member_id}>', ping_list, '\n\ncc.') if len(ping_list) != 0 else ''
     await channel.send(f'🕛 {current_time} - The exchange rate is **{rate} THB/GBP**{ping}')
