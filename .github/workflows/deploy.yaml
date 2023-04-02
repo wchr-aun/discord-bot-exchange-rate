@@ -15,7 +15,7 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.KEY }}
           script: |
-            pkill python3 main.py
+            pkill python3
             cd ~/discord-bot-exchange-rate
             rm ./out
             git pull
