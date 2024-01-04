@@ -1,5 +1,6 @@
 name: Deploy script to DigitalOcean
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
