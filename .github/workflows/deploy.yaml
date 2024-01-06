@@ -20,5 +20,6 @@ jobs:
             cd ~/discord-bot-exchange-rate
             rm ./out
             git pull
+            source ./bin/activate
             pip install -r ./requirements.txt
             python3 main.py > ./out 2>&1 </dev/null &
