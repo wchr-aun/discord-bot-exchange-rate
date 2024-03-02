@@ -1,4 +1,5 @@
 import asyncio
+import logging
 import time
 from datetime import datetime
 from functools import reduce
@@ -14,11 +15,15 @@ client = commands.Bot(command_prefix="", intents=discord.Intents.all())
 exchange_client = ExchangeAPI(EXCHANGE_API)
 firebase_client = Firebase(FIREBASE_SERVICE_ACCOUNT)
 
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+)
+
 
 @client.event
 async def on_ready():
-    print(f"Logged in as {client.user.name}.")
-    print("Starting...")
+    logging.info(f"Logged in as {client.user.name}.")
+    logging.info("Starting...")
     ping_gpb_thb_rate.start()
 
 
@@ -80,9 +85,9 @@ async def on_message(message):
 @ping_gpb_thb_rate.before_loop
 async def before_loop():
     wait_time = EVERY_THREE_HOURS - datetime.utcnow().timestamp() % (EVERY_THREE_HOURS)
-    print(f"Waiting {wait_time} seconds...")
+    logging.info(f"Waiting {wait_time} seconds...")
     await asyncio.sleep(wait_time)
-    print("Finished waiting")
+    logging.info("Finished waiting")
 
 
 client.run(TOKEN)

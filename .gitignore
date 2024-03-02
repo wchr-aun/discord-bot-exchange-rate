@@ -132,3 +132,5 @@ bin
 include
 lib
 pyvenv.cfg
+
+docker_id
