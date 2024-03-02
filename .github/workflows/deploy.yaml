@@ -21,5 +21,4 @@ jobs:
             docker container stop $(cat docker_id)
             docker container rm $(cat docker_id)
             docker image rm discord-bot-exchange
-            for i in 1 2 3; do docker build -t discord-bot-exchange . && break || sleep 5; done
-            docker run -d discord-bot-exchange > docker_id
+            for i in 1 2 3; do (docker build -t discord-bot-exchange . && docker run -d discord-bot-exchange > docker_id) && break || sleep 5; done
