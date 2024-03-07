@@ -29,26 +29,35 @@ async def on_ready():
 
 @tasks.loop(seconds=TIME_LOOP)
 async def ping_gpb_thb_rate():
-    channel = client.get_channel(DISCORD_RATE_CHANNEL_ID)
+    try:
+        logging.info("-- Start pinging GBP-THB rate --")
+        channel = client.get_channel(DISCORD_RATE_CHANNEL_ID)
 
-    while True:
-        rate = exchange_client.get_rates_thb()
-        if rate is not None:
-            break
-        await channel.send("⚠️ Had trouble getting rate... Retrying in 1 minute 🕛")
-        time.sleep(60)
+        logging.info("Getting the rate")
+        while True:
+            rate = exchange_client.get_rates_thb()
+            if rate is not None:
+                break
+            logging.warn("Getting None from get_rates_thb() - sending a message and retrying later")
+            await channel.send("⚠️ Had trouble getting rate... Retrying in 1 minute 🕛")
+            time.sleep(60)
+        logging.info(f"Successfully got the rate {rate}")
 
-    now = datetime.now()
-    current_time = now.strftime("%H:%M:%S")
-    ping_list = firebase_client.get_profile_rates_less_than(rate)
-    ping = (
-        reduce(lambda acc, member_id: f"{acc} <@{member_id}>", ping_list, "\n\ncc.")
-        if len(ping_list) != 0
-        else ""
-    )
-    await channel.send(
-        f"🕛 {current_time} - The exchange rate is **{rate} THB/GBP**{ping}"
-    )
+        now = datetime.now()
+        current_time = now.strftime("%H:%M:%S")
+        ping_list = firebase_client.get_profile_rates_less_than(rate)
+        ping = (
+            reduce(lambda acc, member_id: f"{acc} <@{member_id}>", ping_list, "\n\ncc.")
+            if len(ping_list) != 0
+            else ""
+        )
+        logging.info("Publishing the rate in Discord channel")
+        await channel.send(
+            f"🕛 {current_time} - The exchange rate is **{rate} THB/GBP**{ping}"
+        )
+        logging.info("-- Done pinging GBP-THB rate --")
+    except Exception as e:
+        logging.critical(e, exc_info=True)
 
 
 @client.event
