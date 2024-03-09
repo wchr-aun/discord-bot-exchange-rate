@@ -1,3 +1,4 @@
+import logging
 import requests
 
 
@@ -13,14 +14,19 @@ class ExchangeAPI:
         payload = {}
         headers = {"apikey": self.EXCHANGE_API}
 
-        response = requests.request(
-            "GET", self.EXCHANGE_URL, headers=headers, data=payload, timeout=10
-        )
+        try:
+            response = requests.request(
+                "GET", self.EXCHANGE_URL, headers=headers, data=payload, timeout=15
+            )
 
-        status_code = response.status_code
-        if status_code != 200:
+            status_code = response.status_code
+            if status_code != 200:
+                logging.warn("get_gbp_to_thb not getting a 200 response")
+                return None
+            return response.json()
+        except Exception as e:
+            logging.critical(e, exc_info=True)
             return None
-        return response.json()
 
     def get_rates_thb(self) -> float:
         rates = self.get_gbp_to_thb()
