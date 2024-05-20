@@ -1,19 +1,22 @@
 import asyncio
 import logging
 import time
-from datetime import datetime
+from datetime import UTC, datetime
 from functools import reduce
 
 import discord
 from discord.ext import commands, tasks
 
-from exchange_api import ExchangeAPI
-from firebase import Firebase
+from channel.exchange import on_message as exchange_on_message
+from external.ApiLayer import ExchangeAPI
+from external.Blockchain import Blockchain
+from external.Firebase import Firebase
 from setup import *
 
 client = commands.Bot(command_prefix="", intents=discord.Intents.all())
 exchange_client = ExchangeAPI(EXCHANGE_API)
 firebase_client = Firebase(FIREBASE_SERVICE_ACCOUNT)
+blockchain_client = Blockchain()
 
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
@@ -25,9 +28,10 @@ async def on_ready():
     logging.info(f"Logged in as {client.user.name}.")
     logging.info("Starting...")
     ping_gpb_thb_rate.start()
+    ping_mvrv.start()
 
 
-@tasks.loop(seconds=TIME_LOOP)
+@tasks.loop(seconds=TIME_LOOP_API_LAYER)
 async def ping_gpb_thb_rate():
     try:
         logging.info("-- Start pinging GBP-THB rate --")
@@ -38,7 +42,9 @@ async def ping_gpb_thb_rate():
             rate = exchange_client.get_rates_thb()
             if rate is not None:
                 break
-            logging.warn("Getting None from get_rates_thb() - sending a message and retrying later")
+            logging.warn(
+                "Getting None from get_rates_thb() - sending a message and retrying later"
+            )
             await channel.send("⚠️ Had trouble getting rate... Retrying in 1 minute 🕛")
             time.sleep(60)
         logging.info(f"Successfully got the rate {rate}")
@@ -60,43 +66,41 @@ async def ping_gpb_thb_rate():
         logging.critical(e, exc_info=True)
 
 
+@tasks.loop(seconds=TIME_LOOP_BTC_MVRV)
+async def ping_mvrv():
+    logging.info("-- Start pinging MVRV --")
+    channel = client.get_channel(DISCORD_MVRV_CHANNEL_ID)
+    timestamp, mvrv = blockchain_client.get_mvrv()
+    latest_mvrv_timestamp = firebase_client.get_latest_mvrv_timestamp()
+    if timestamp > latest_mvrv_timestamp:
+        firebase_client.set_latest_mvrv_timestamp(timestamp)
+        await channel.send(f"{datetime.fromtimestamp(timestamp)} BTC MVRV - {mvrv}")
+    else:
+        logging.info("Not sending message")
+    logging.info("-- Done pinging MVRV --")
+
+
 @client.event
 async def on_message(message):
-    if (
-        message.channel.id != DISCORD_SETTING_CHANNEL_ID
-        or message.author.id == client.user.id
-    ):
-        return
-    if not message.content.startswith("!rate"):
-        await message.channel.send(INVALID_SETTING_MESSAGE)
-        return
-    if len(message.content.split(" ")) == 1:
-        await message.channel.send(INVALID_SETTING_MESSAGE)
-        return
-
-    profile_id = message.author.id
-    command = message.content.split(" ")[1]
-    if command == "set" and len(message.content.split(" ")) == 3:
-        rate = float(message.content.split(" ")[2])
-        firebase_client.set_profile_rates(profile_id, rate)
-        await message.channel.send(
-            f"<@{profile_id}>'s rate notification is set to {rate} THB/GBP 💰"
-        )
-    elif command == "get":
-        rate = firebase_client.get_profile_rates(profile_id)
-        await message.channel.send(
-            f"<@{profile_id}>'s rate notification is {rate} THB/GBP 💰"
-        )
-    else:
-        await message.channel.send(INVALID_SETTING_MESSAGE)
+    if message.channel.id == DISCORD_SETTING_CHANNEL_ID:
+        return await exchange_on_message(message, client, firebase_client)
+    return
 
 
 @ping_gpb_thb_rate.before_loop
-async def before_loop():
-    wait_time = EVERY_THREE_HOURS - datetime.utcnow().timestamp() % (EVERY_THREE_HOURS)
-    logging.info(f"Waiting {wait_time} seconds...")
+async def before_ping_gpb_thb_rate_loop():
+    wait_time = EVERY_THREE_HOURS - datetime.now(UTC).timestamp() % (EVERY_THREE_HOURS)
+    logging.info(f"Waiting {wait_time} seconds to ping_gpb_thb_rate")
     await asyncio.sleep(wait_time)
-    logging.info("Finished waiting")
+    logging.info("Finished waiting for ping_gpb_thb_rate")
+
+
+@ping_mvrv.before_loop
+async def before_ping_mvrv_loop():
+    wait_time = EVERY_ONE_HOUR - datetime.now(UTC).timestamp() % (EVERY_ONE_HOUR)
+    logging.info(f"Waiting {wait_time} seconds to start ping_mvrv")
+    await asyncio.sleep(wait_time)
+    logging.info("Finished waiting for ping_mvrv")
 
 
 client.run(TOKEN)

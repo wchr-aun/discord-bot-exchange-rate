@@ -1,5 +1,8 @@
 import logging
+
 import requests
+
+from setup import IS_PROD
 
 
 class ExchangeAPI:
@@ -29,7 +32,7 @@ class ExchangeAPI:
             return None
 
     def get_rates_thb(self) -> float:
-        rates = self.get_gbp_to_thb()
+        rates = self.get_gbp_to_thb() if IS_PROD else {"rates": {"THB": 45}}
         if rates is None:
             return None
         return rates["rates"]["THB"]
