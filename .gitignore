@@ -134,3 +134,5 @@ lib
 pyvenv.cfg
 
 docker_id
+pid
+out

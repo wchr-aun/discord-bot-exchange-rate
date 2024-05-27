@@ -10,6 +10,7 @@ from discord.ext import commands, tasks
 from channel.exchange import on_message as exchange_on_message
 from external.ApiLayer import ExchangeAPI
 from external.Blockchain import Blockchain
+from external.FaithInOpenrent import FaithInOpenrent
 from external.Firebase import Firebase
 from setup import *
 
@@ -17,6 +18,7 @@ client = commands.Bot(command_prefix="", intents=discord.Intents.all())
 exchange_client = ExchangeAPI(EXCHANGE_API)
 firebase_client = Firebase(FIREBASE_SERVICE_ACCOUNT)
 blockchain_client = Blockchain()
+for_client = FaithInOpenrent()
 
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
@@ -29,6 +31,7 @@ async def on_ready():
     logging.info("Starting...")
     ping_gpb_thb_rate.start()
     ping_mvrv.start()
+    ping_for.start()
 
 
 @tasks.loop(seconds=TIME_LOOP_API_LAYER)
@@ -80,6 +83,32 @@ async def ping_mvrv():
     logging.info("-- Done pinging MVRV --")
 
 
+@tasks.loop(seconds=TIME_LOOP_FOR)
+async def ping_for():
+    logging.info("-- Start pinging FOR --")
+    channel = client.get_channel(DISCORD_FOR_CHANNEL_ID)
+    properties = for_client.get_for()
+    for property in properties:
+        if firebase_client.is_for_property_id_pinged(property["id"]):
+            logging.info(f"FOR: Skip {property["id"]}")
+            continue
+
+        embed = discord.Embed(
+            title=property["title"], description=property["description"]
+        )
+        embed.set_image(
+            url="https://imagescdn.openrent.co.uk/listings/790801/o_1eb3kjtmruc5chglua1osq12st2i.JPG_homepage.JPG"
+        )
+
+        firebase_client.save_for_property_id(property['id'])
+
+        await channel.send(
+            content=f"Available on **{property['availableOn']}** for **£{property['price']}** *({property['lastUpdated']})* \n\n[Go to Openrent]({property['url']})",
+            embed=embed,
+        )
+    logging.info("-- Done pinging FOR --")
+
+
 @client.event
 async def on_message(message):
     if message.channel.id == DISCORD_SETTING_CHANNEL_ID:
@@ -101,6 +130,14 @@ async def before_ping_mvrv_loop():
     logging.info(f"Waiting {wait_time} seconds to start ping_mvrv")
     await asyncio.sleep(wait_time)
     logging.info("Finished waiting for ping_mvrv")
+
+
+@ping_for.before_loop
+async def before_ping_for_loop():
+    wait_time = EVERY_THREE_HOURS - datetime.now(UTC).timestamp() % (EVERY_THREE_HOURS)
+    logging.info(f"Waiting {wait_time} seconds to start ping_for")
+    await asyncio.sleep(wait_time)
+    logging.info("Finished waiting for ping_for")
 
 
 client.run(TOKEN)

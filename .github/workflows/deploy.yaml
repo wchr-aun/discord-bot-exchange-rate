@@ -16,10 +16,11 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.KEY }}
           script: |
-            pkill python3
+            kill -9 $(cat ./pid)
             cd ~/discord-bot-exchange-rate
             rm ./out
+            rm ./pid
             git pull
             source ./bin/activate
             pip install -r ./requirements.txt
-            python3 main.py > ./out 2>&1 </dev/null &
+            nohup python3 main.py > ./out 2>&1 </dev/null & echo $! > pid

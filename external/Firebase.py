@@ -34,3 +34,14 @@ class Firebase:
     def set_latest_mvrv_timestamp(self, timestamp: int) -> None:
         doc_ref = self.db.collection("mvrv").document("latest_time")
         doc_ref.set({"timestamp": timestamp})
+
+    def is_for_property_id_pinged(self, id: int) -> bool:
+        doc_ref = self.db.collection("for").document(str(id))
+        doc = doc_ref.get()
+        if doc.exists:
+            return doc.to_dict().get("pinged")
+        return False
+
+    def save_for_property_id(self, id: int) -> None:
+        doc_ref = self.db.collection("for").document(str(id))
+        doc_ref.set({"pinged": True})
