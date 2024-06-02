@@ -97,7 +97,7 @@ async def ping_for():
             title=property["title"], description=property["description"]
         )
         embed.set_image(
-            url="https://imagescdn.openrent.co.uk/listings/790801/o_1eb3kjtmruc5chglua1osq12st2i.JPG_homepage.JPG"
+            url=property['previewImage']
         )
 
         firebase_client.save_for_property_id(property['id'])
