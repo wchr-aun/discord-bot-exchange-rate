@@ -16,8 +16,8 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.KEY }}
           script: |
-            kill -9 $(cat ./pid)
             cd ~/discord-bot-exchange-rate
+            kill -9 $(cat ./pid)
             rm ./out
             rm ./pid
             git pull
