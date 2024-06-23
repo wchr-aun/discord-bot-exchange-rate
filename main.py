@@ -73,13 +73,21 @@ async def ping_gpb_thb_rate():
 async def ping_mvrv():
     logging.info("-- Start pinging MVRV --")
     channel = client.get_channel(DISCORD_MVRV_CHANNEL_ID)
-    timestamp, mvrv = blockchain_client.get_mvrv()
+    mvrv_response = blockchain_client.get_mvrv()
+    
+    if mvrv_response == None:
+        logging.warning("MVRV: MVRV response being None")
+        logging.info("-- Done pinging MVRV --")
+        return
+
+    timestamp, mvrv = mvrv_response
     latest_mvrv_timestamp = firebase_client.get_latest_mvrv_timestamp()
+    logging.info(latest_mvrv_timestamp)
     if timestamp > latest_mvrv_timestamp:
         firebase_client.set_latest_mvrv_timestamp(timestamp)
         await channel.send(f"{datetime.fromtimestamp(timestamp)} BTC MVRV - {mvrv}")
     else:
-        logging.info("MVRV: Not sending message")
+        logging.info("MVRV: No updates")
     logging.info("-- Done pinging MVRV --")
 
 
