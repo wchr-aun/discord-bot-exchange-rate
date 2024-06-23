@@ -40,17 +40,17 @@ async def ping_gpb_thb_rate():
         logging.info("-- Start pinging GBP-THB rate --")
         channel = client.get_channel(DISCORD_RATE_CHANNEL_ID)
 
-        logging.info("Getting the rate")
+        logging.info("EXCHANGE: Getting the rate")
         while True:
             rate = exchange_client.get_rates_thb()
             if rate is not None:
                 break
             logging.warn(
-                "Getting None from get_rates_thb() - sending a message and retrying later"
+                "EXCHANGE: Getting None from get_rates_thb() - sending a message and retrying later"
             )
-            await channel.send("⚠️ Had trouble getting rate... Retrying in 1 minute 🕛")
+            await channel.send("EXCHANGE: ⚠️ Had trouble getting rate... Retrying in 1 minute 🕛")
             time.sleep(60)
-        logging.info(f"Successfully got the rate {rate}")
+        logging.info(f"EXCHANGE: Successfully got the rate {rate}")
 
         now = datetime.now()
         current_time = now.strftime("%H:%M:%S")
@@ -60,7 +60,7 @@ async def ping_gpb_thb_rate():
             if len(ping_list) != 0
             else ""
         )
-        logging.info("Publishing the rate in Discord channel")
+        logging.info("EXCHANGE: Publishing the rate in Discord channel")
         await channel.send(
             f"🕛 {current_time} - The exchange rate is **{rate} THB/GBP**{ping}"
         )
@@ -79,7 +79,7 @@ async def ping_mvrv():
         firebase_client.set_latest_mvrv_timestamp(timestamp)
         await channel.send(f"{datetime.fromtimestamp(timestamp)} BTC MVRV - {mvrv}")
     else:
-        logging.info("Not sending message")
+        logging.info("MVRV: Not sending message")
     logging.info("-- Done pinging MVRV --")
 
 

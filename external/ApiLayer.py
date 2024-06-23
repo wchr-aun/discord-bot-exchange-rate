@@ -24,7 +24,7 @@ class ExchangeAPI:
 
             status_code = response.status_code
             if status_code != 200:
-                logging.warn("get_gbp_to_thb not getting a 200 response")
+                logging.warn("EXCHANGE: get_gbp_to_thb not getting a 200 response")
                 return None
             return response.json()
         except Exception as e:

@@ -13,7 +13,9 @@ class FaithInOpenrent:
             response = requests.request("GET", self.FOR_URL, timeout=15)
             status_code = response.status_code
             if status_code != 200:
-                logging.warn("call_blockchain_com_chart_api not getting a 200 response")
+                logging.warn(
+                    "FOR: call_blockchain_com_chart_api not getting a 200 response"
+                )
                 return None
             return response.json()
         except Exception as e:
