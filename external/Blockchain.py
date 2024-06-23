@@ -23,4 +23,7 @@ class Blockchain:
         response = self.call_blockchain_com_chart_api()
         if response == None:
             return None
-        return (response["values"][-1]["x"], response["values"][-1]["y"])
+        try:
+            return (response["values"][-1]["x"], response["values"][-1]["y"])
+        except:
+            return None
