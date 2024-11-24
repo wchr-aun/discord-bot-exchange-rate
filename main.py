@@ -9,6 +9,7 @@ from discord.ext import commands, tasks
 
 from channel.exchange import on_message as exchange_on_message
 from external.ApiLayer import ExchangeAPI
+from external.Binance import BinanceApi
 from external.Blockchain import Blockchain
 from external.Firebase import Firebase
 from setup import *
@@ -16,6 +17,7 @@ from setup import *
 client = commands.Bot(command_prefix="", intents=discord.Intents.all())
 exchange_client = ExchangeAPI(EXCHANGE_API)
 firebase_client = Firebase(FIREBASE_SERVICE_ACCOUNT)
+binance_client = BinanceApi()
 blockchain_client = Blockchain()
 
 logging.basicConfig(
@@ -93,10 +95,13 @@ async def ping_mvrv():
     timestamp, mvrv = mvrv_response
     latest_mvrv_timestamp = firebase_client.get_latest_mvrv_timestamp()
     logging.info(latest_mvrv_timestamp)
+    btc_price = binance_client.get_btc_price()
     if timestamp > latest_mvrv_timestamp:
         firebase_client.set_latest_mvrv_timestamp(timestamp)
         await attemptSending(
-            channel, "MVRV", f"{datetime.fromtimestamp(timestamp)} BTC MVRV - {mvrv}"
+            channel,
+            "MVRV",
+            f"{datetime.fromtimestamp(timestamp)} BTC MVRV - {mvrv}; BTC Price - {btc_price}",
         )
     else:
         logging.info("MVRV: No updates")

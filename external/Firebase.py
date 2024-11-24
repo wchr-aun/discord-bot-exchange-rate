@@ -2,6 +2,8 @@ import json
 
 from firebase_admin import credentials, firestore, initialize_app
 
+from setup import IS_PROD
+
 
 class Firebase:
     def __init__(self, service_account: str) -> None:
@@ -32,6 +34,8 @@ class Firebase:
         return doc.to_dict().get("timestamp")
 
     def set_latest_mvrv_timestamp(self, timestamp: int) -> None:
+        if not IS_PROD:
+            return
         doc_ref = self.db.collection("mvrv").document("latest_time")
         doc_ref.set({"timestamp": timestamp})
 
