@@ -1,5 +1,7 @@
 import logging
 import requests
+from datetime import datetime
+from setup import IS_PROD
 
 
 class Blockchain:
@@ -21,7 +23,10 @@ class Blockchain:
             logging.critical(e, exc_info=True)
             return None
 
-    def get_mvrv(self) -> int:
+    def get_mvrv(self) -> tuple:
+        if not IS_PROD:
+            return (int(datetime.now().timestamp()), 1.5)
+
         response = self.call_blockchain_com_chart_api()
         if response == None:
             return None

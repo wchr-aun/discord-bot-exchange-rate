@@ -4,7 +4,7 @@ from external.ApiLayer import ExchangeAPI
 from external.Binance import BinanceApi
 from external.Blockchain import Blockchain
 
-def test_apilayer_get_rates_thb_success():
+def test_apilayer_get_rate_success():
     api = ExchangeAPI("dummy_key")
     with patch("requests.request") as mock_get:
         mock_get.return_value.status_code = 200
@@ -12,7 +12,7 @@ def test_apilayer_get_rates_thb_success():
         
         # Force IS_PROD to True for this test to actually call the mock
         with patch("external.ApiLayer.IS_PROD", True):
-            rate = api.get_rates_thb()
+            rate = api.get_rate("GBP", "THB")
             assert rate == 45.0
 
 def test_binance_get_btc_price_success():
