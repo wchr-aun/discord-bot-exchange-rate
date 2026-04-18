@@ -1,13 +1,11 @@
 import asyncio
 import logging
 from datetime import UTC, datetime
+
 from discord.ext import tasks
+
 from features.utils import attemptSending
-from setup import (
-    TIME_LOOP_BTC_MVRV,
-    DISCORD_MVRV_CHANNEL_ID,
-    EVERY_ONE_HOUR,
-)
+from setup import DISCORD_MVRV_CHANNEL_ID, EVERY_ONE_HOUR, TIME_LOOP_BTC_MVRV
 
 # Global clients to be set during setup()
 _bot = None
@@ -29,7 +27,7 @@ async def ping_mvrv():
 
     timestamp, mvrv = mvrv_response
     latest_mvrv_timestamp = _firebase_client.get_latest_mvrv_timestamp()
-    logging.info(latest_mvrv_timestamp)
+    logging.info(f"Latest MVRV Timestamp: {latest_mvrv_timestamp}")
     btc_price = _binance_client.get_btc_price()
     if timestamp > latest_mvrv_timestamp:
         _firebase_client.set_latest_mvrv_timestamp(timestamp)

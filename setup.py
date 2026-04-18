@@ -15,6 +15,7 @@ DISCORD_ID = os.getenv("DISCORD_ID")
 # Simply add more pairs here in the future: ["GBP-THB", "SGD-THB", ...]
 EXCHANGE_PAIRS = ["GBP-THB"]
 
+
 def get_rate_channel_id(pair: str = "GBP-THB"):
     # Defaulting to GBP-THB channel IDs for others if not specified in .env
     # To scale: add DISCORD_PAIRNAME_RATE_CHANNEL_ID to .env and handle here
@@ -23,6 +24,7 @@ def get_rate_channel_id(pair: str = "GBP-THB"):
         if IS_PROD
         else int(os.getenv("DISCORD_DEV_RATE_CHANNEL_ID"))
     )
+
 
 DISCORD_RATE_CHANNEL_ID = get_rate_channel_id("GBP-THB")
 
@@ -49,10 +51,10 @@ DISCORD_MVRV_CHANNEL_ID = (
 TIME_LOOP_BTC_MVRV = 60 * 60  # 1 hour
 EVERY_ONE_HOUR = 60 * 60 if IS_PROD else 1
 
-DISCORD_FOR_CHANNEL_ID = (
-    int(os.getenv("DISCORD_FOR_CHANNEL_ID"))
-    if IS_PROD
-    else int(os.getenv("DISCORD_DEV_FOR_CHANNEL_ID"))
-)
 TIME_LOOP_FOR = 24 * 60 * 60
+DISCORD_LOGS_CHANNEL_ID = (
+    int(os.getenv("DISCORD_LOGS_CHANNEL_ID"))
+    if IS_PROD
+    else int(os.getenv("DISCORD_DEV_LOGS_CHANNEL_ID"))
+)
 EVERY_ONE_DAY = 24 * 60 * 60 if IS_PROD else 1
