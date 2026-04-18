@@ -10,6 +10,8 @@ from external.Blockchain import Blockchain
 from external.Firebase import Firebase
 from features.btc_mvrv import setup as setup_btc_mvrv
 from features.exchange_rate import setup as setup_exchange_rate
+from features.exchange_rate.handlers import \
+    on_message as on_exchange_rate_message
 from features.logging import setup as setup_logging
 from features.utils import attemptSending
 from setup import *
@@ -51,12 +53,8 @@ async def on_ready():
 
 
 @client.event
-async def on_command_error(ctx, error):
-    if isinstance(error, commands.CommandNotFound):
-        if ctx.message.content.startswith("!rate"):
-            logging.info(f"Ignoring CommandNotFound for !rate - handled by listener")
-            return
-    raise error
+async def on_message(message):
+    await on_exchange_rate_message(message)
 
 
 if __name__ == "__main__":

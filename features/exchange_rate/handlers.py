@@ -75,4 +75,3 @@ def setup_handlers(bot, firebase_client):
     global _bot, _firebase_client
     _bot = bot
     _firebase_client = firebase_client
-    bot.add_listener(on_message, "on_message")
