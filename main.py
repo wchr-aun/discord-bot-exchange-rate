@@ -131,4 +131,5 @@ async def before_ping_mvrv_loop():
     logging.info("Finished waiting for ping_mvrv")
 
 
-client.run(TOKEN)
+if __name__ == "__main__":
+    client.run(TOKEN)
