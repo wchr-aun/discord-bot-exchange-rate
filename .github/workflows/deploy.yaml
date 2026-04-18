@@ -20,7 +20,8 @@ jobs:
             kill -9 $(cat ./pid)
             rm ./out
             rm ./pid
-            git pull
+            git fetch --all
+            git reset --hard origin/main
             source ./bin/activate
             pip install -r ./requirements.txt
             nohup python3 main.py > ./out 2>&1 </dev/null & echo $! > pid
