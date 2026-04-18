@@ -57,4 +57,5 @@ DISCORD_LOGS_CHANNEL_ID = (
     if IS_PROD
     else int(os.getenv("DISCORD_DEV_LOGS_CHANNEL_ID"))
 )
+DISCORD_LOGS_FLUSH_DELAY = 2  # seconds
 EVERY_ONE_DAY = 24 * 60 * 60 if IS_PROD else 1
