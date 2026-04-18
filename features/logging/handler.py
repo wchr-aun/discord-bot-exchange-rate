@@ -1,6 +1,8 @@
-import logging
 import asyncio
+import logging
+
 from setup import DISCORD_LOGS_FLUSH_DELAY
+
 
 class DiscordHandler(logging.Handler):
     def __init__(self, bot, channel_id):
@@ -27,8 +29,11 @@ class DiscordHandler(logging.Handler):
                 self._flush_task = self.bot.loop.create_task(self._wait_and_flush())
 
     async def _wait_and_flush(self):
-        await asyncio.sleep(DISCORD_LOGS_FLUSH_DELAY)
-        await self.flush_buffer()
+        # Loop as long as there are items in the buffer.
+        # This catches any logs added while flush_buffer was yielding during network calls.
+        while self.buffer:
+            await asyncio.sleep(DISCORD_LOGS_FLUSH_DELAY)
+            await self.flush_buffer()
 
     async def flush_buffer(self):
         async with self._lock:
@@ -59,5 +64,7 @@ class DiscordHandler(logging.Handler):
                 if current_batch != "```\n":
                     await channel.send(current_batch + "```")
         except Exception:
+            # Fallback to prevent logging errors from crashing the app
+            pass
             # Fallback to prevent logging errors from crashing the app
             pass
