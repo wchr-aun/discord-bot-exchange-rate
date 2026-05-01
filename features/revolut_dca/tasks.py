@@ -25,8 +25,7 @@ async def run_dca_logic():
     channel = _bot.get_channel(DISCORD_REVOLUT_CHANNEL_ID)
 
     now = datetime.now(UTC)
-    # execution_date = now.strftime("%Y-%m-%d")
-    execution_date = "2026-05-03"
+    execution_date = now.strftime("%Y-%m-%d")
     decision = _firebase_client.get_dca_skip_decision(execution_date)
     if decision and decision.get("state") == "SKIPPING":
         msg = f"Skipping DCA for {execution_date} as requested."
