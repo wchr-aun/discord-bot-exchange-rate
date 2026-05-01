@@ -22,7 +22,6 @@ pip install -r requirements.txt
 
 ```
 DISCORD_TOKEN=
-DISCORD_GUILD=
 EXCHANGE_API=
 DISCORD_ID=
 DISCORD_RATE_CHANNEL_ID=

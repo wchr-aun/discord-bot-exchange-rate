@@ -5,7 +5,6 @@ import pytest
 
 # Set up dummy environment variables for tests
 os.environ["DISCORD_TOKEN"] = "dummy_token"
-os.environ["DISCORD_GUILD"] = "dummy_guild"
 os.environ["EXCHANGE_API"] = "dummy_api"
 os.environ["DISCORD_ID"] = "123456789"
 os.environ["DISCORD_RATE_CHANNEL_ID"] = "111"

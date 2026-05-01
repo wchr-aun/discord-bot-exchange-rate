@@ -7,7 +7,6 @@ load_dotenv()
 IS_PROD = os.getenv("ENV") == "PROD"
 
 TOKEN = os.getenv("DISCORD_TOKEN")
-GUILD = os.getenv("DISCORD_GUILD")
 EXCHANGE_API = os.getenv("EXCHANGE_API")
 DISCORD_ID = os.getenv("DISCORD_ID")
 
@@ -59,3 +58,14 @@ DISCORD_LOGS_CHANNEL_ID = (
 )
 DISCORD_LOGS_FLUSH_DELAY = 2  # seconds
 EVERY_ONE_DAY = 24 * 60 * 60 if IS_PROD else 1
+
+REVOLUT_PRIVATE_KEY = os.getenv("REVOLUT_PRIVATE_KEY")
+REVOLUT_API_KEY = os.getenv("REVOLUT_API_KEY")
+REVOLUT_DCA_QUOTE_SIZE = 60
+
+DISCORD_REVOLUT_CHANNEL_ID = (
+    int(os.getenv("DISCORD_REVOLUT_CHANNEL_ID") or 0)
+    if IS_PROD
+    else int(os.getenv("DISCORD_DEV_REVOLUT_CHANNEL_ID") or 0)
+)
+TIME_LOOP_REVOLUT_DCA = 24 * 60 * 60 if IS_PROD else 60
