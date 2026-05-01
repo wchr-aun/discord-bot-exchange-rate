@@ -34,3 +34,29 @@ def test_firebase_get_profile_rates_exists():
 
     rate = fb.get_profile_rates("user123", pair="GBP-THB")
     assert rate == 45.0
+
+
+def test_firebase_dca_skip_decision():
+    fb = Firebase('{"dummy": "info"}')
+    mock_db = fb.db
+    mock_col = mock_db.collection.return_value
+    mock_doc_ref = mock_col.document.return_value
+    mock_doc = mock_doc_ref.get.return_value
+
+    # Test get_dca_skip_decision (exists)
+    mock_doc.exists = True
+    mock_doc.to_dict.return_value = {"state": "SKIPPING"}
+    result = fb.get_dca_skip_decision("2024-05-19")
+    assert result == {"state": "SKIPPING"}
+    mock_db.collection.assert_called_with("revolut_dca_skip")
+    mock_col.document.assert_called_with("2024-05-19")
+
+    # Test get_dca_skip_decision (not exists)
+    mock_doc.exists = False
+    result = fb.get_dca_skip_decision("2024-05-20")
+    assert result is None
+
+    # Test set_dca_skip_decision
+    data = {"state": "SKIPPED"}
+    fb.set_dca_skip_decision("2024-05-19", data)
+    mock_doc_ref.set.assert_called_with(data, merge=True)

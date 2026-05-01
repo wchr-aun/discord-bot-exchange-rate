@@ -14,6 +14,7 @@ from features.exchange_rate import setup as setup_exchange_rate
 from features.exchange_rate.handlers import on_message as on_exchange_rate_message
 from features.logging import setup as setup_logging
 from features.revolut_dca import setup as setup_revolut_dca
+from features.revolut_dca.handlers import on_message as on_revolut_dca_message
 from features.utils import attemptSending
 from setup import *
 
@@ -54,7 +55,7 @@ async def on_ready():
             logging.info("Starting features...")
     setup_exchange_rate(client, exchange_client, firebase_client)
     setup_btc_mvrv(client, blockchain_client, firebase_client, binance_client)
-    setup_revolut_dca(client, revolut_client)
+    setup_revolut_dca(client, revolut_client, firebase_client)
 
     logging.info("All features started.")
 
@@ -62,6 +63,7 @@ async def on_ready():
 @client.event
 async def on_message(message):
     await on_exchange_rate_message(message)
+    await on_revolut_dca_message(message)
 
 
 if __name__ == "__main__":

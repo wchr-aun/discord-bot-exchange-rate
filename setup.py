@@ -69,3 +69,7 @@ DISCORD_REVOLUT_CHANNEL_ID = (
     else int(os.getenv("DISCORD_DEV_REVOLUT_CHANNEL_ID") or 0)
 )
 TIME_LOOP_REVOLUT_DCA = 24 * 60 * 60 if IS_PROD else 60
+
+# DCA Schedule Configuration
+REVOLUT_DCA_DAY_OF_WEEK = 6  # Sunday=6, Monday=0, etc.
+REVOLUT_DCA_EXECUTION_HOUR = 4  # 4:00 AM UTC

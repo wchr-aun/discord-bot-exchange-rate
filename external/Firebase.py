@@ -63,3 +63,14 @@ class Firebase:
     def save_for_property_id(self, id: int) -> None:
         doc_ref = self.db.collection("for").document(str(id))
         doc_ref.set({"pinged": True})
+
+    def get_dca_skip_decision(self, execution_date: str) -> dict:
+        doc_ref = self.db.collection("revolut_dca_skip").document(execution_date)
+        doc = doc_ref.get()
+        if doc.exists:
+            return doc.to_dict()
+        return None
+
+    def set_dca_skip_decision(self, execution_date: str, data: dict) -> None:
+        doc_ref = self.db.collection("revolut_dca_skip").document(execution_date)
+        doc_ref.set(data, merge=True)
