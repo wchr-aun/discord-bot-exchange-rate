@@ -7,16 +7,14 @@ import pytest
 os.environ["DISCORD_TOKEN"] = "dummy_token"
 os.environ["EXCHANGE_API"] = "dummy_api"
 os.environ["DISCORD_ID"] = "123456789"
-os.environ["DISCORD_RATE_CHANNEL_ID"] = "111"
 os.environ["DISCORD_DEV_RATE_CHANNEL_ID"] = "111"
-os.environ["DISCORD_SETTING_CHANNEL_ID"] = "222"
 os.environ["DISCORD_DEV_SETTING_CHANNEL_ID"] = "222"
 os.environ["FIREBASE_SERVICE_ACCOUNT"] = (
     '{"type": "service_account", "project_id": "dummy", "client_email": "dummy@dummy.com", "token_uri": "https://dummy.com", "private_key": "dummy_key"}'
 )
-os.environ["DISCORD_MVRV_CHANNEL_ID"] = "333"
 os.environ["DISCORD_DEV_MVRV_CHANNEL_ID"] = "333"
-os.environ["DISCORD_FOR_CHANNEL_ID"] = "444"
+os.environ["DISCORD_DEV_REVOLUT_CHANNEL_ID"] = "444"
+os.environ["DISCORD_DEV_LOGS_CHANNEL_ID"] = "555"
 os.environ["ENV"] = "DEV"
 
 # Mock firebase_admin at the global level to avoid issues during imports
