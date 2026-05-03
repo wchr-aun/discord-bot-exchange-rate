@@ -7,7 +7,7 @@ from external.Blockchain import Blockchain
 
 def test_apilayer_get_rate_success():
     api = ExchangeAPI("dummy_key")
-    with patch("requests.request") as mock_get:
+    with patch("external.http_client.request") as mock_get:
         mock_get.return_value.status_code = 200
         mock_get.return_value.json.return_value = {"rates": {"THB": 45.0}}
 
@@ -19,7 +19,7 @@ def test_apilayer_get_rate_success():
 
 def test_binance_get_btc_price_success():
     api = BinanceApi()
-    with patch("requests.request") as mock_get:
+    with patch("external.http_client.request") as mock_get:
         mock_get.return_value.status_code = 200
         mock_get.return_value.json.return_value = {"price": "60000.0"}
 
@@ -29,7 +29,7 @@ def test_binance_get_btc_price_success():
 
 def test_blockchain_get_mvrv_success():
     api = Blockchain()
-    with patch("requests.request") as mock_get:
+    with patch("external.http_client.request") as mock_get:
         with patch("external.Blockchain.IS_PROD", True):
             mock_get.return_value.status_code = 200
             mock_get.return_value.json.return_value = {

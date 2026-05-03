@@ -1,6 +1,6 @@
 import logging
-import requests
 from datetime import datetime
+from external import http_client
 from setup import IS_PROD
 
 
@@ -11,10 +11,10 @@ class Blockchain:
 
     def call_blockchain_com_chart_api(self) -> dict:
         try:
-            response = requests.request("GET", self.EXCHANGE_URL, timeout=15)
+            response = http_client.request("GET", self.EXCHANGE_URL, timeout=15)
             status_code = response.status_code
             if status_code != 200:
-                logging.warn(
+                logging.warning(
                     "MVRV: call_blockchain_com_chart_api not getting a 200 response"
                 )
                 return None

@@ -4,7 +4,7 @@ import logging
 import time
 import uuid
 
-import requests
+from external import http_client
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric import ed25519
@@ -40,7 +40,7 @@ class RevolutApi:
             "X-Revx-Signature": self._get_signature(timestamp, method, path, "", ""),
         }
         try:
-            response = requests.request(
+            response = http_client.request(
                 method, f"{self.base_url}{path}", headers=headers, timeout=15
             )
             if response.status_code != 200:
@@ -95,7 +95,7 @@ class RevolutApi:
             ),
         }
         try:
-            response = requests.request(
+            response = http_client.request(
                 method,
                 f"{self.base_url}{path}",
                 headers=headers,

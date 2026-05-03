@@ -1,7 +1,6 @@
 import logging
 
-import requests
-
+from external import http_client
 from setup import IS_PROD
 
 
@@ -17,13 +16,15 @@ class ExchangeAPI:
         url = f"{self.BASE_URL}?symbols={symbols}&base={base}"
 
         try:
-            response = requests.request(
+            response = http_client.request(
                 "GET", url, headers=headers, data=payload, timeout=15
             )
 
             status_code = response.status_code
             if status_code != 200:
-                logging.warn(f"EXCHANGE: get_rates ({base}-{symbols}) not getting a 200 response")
+                logging.warning(
+                    f"EXCHANGE: get_rates ({base}-{symbols}) not getting a 200 response"
+                )
                 return None
             return response.json()
         except Exception as e:
@@ -34,7 +35,7 @@ class ExchangeAPI:
         if not IS_PROD:
             # Mock rates for development
             return 45.0
-            
+
         rates = self.get_rates(base=base, symbols=symbol)
         if rates is None or "rates" not in rates or symbol not in rates["rates"]:
             return None

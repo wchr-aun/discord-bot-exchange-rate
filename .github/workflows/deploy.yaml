@@ -1,4 +1,4 @@
-name: Deploy script to DigitalOcean
+name: Run tests and deploy to DigitalOcean
 on:
   workflow_dispatch:
   push:
@@ -22,7 +22,7 @@ jobs:
         run: make test
 
   deploy:
-    name: Deploy script to DigitalOcean
+    name: Deploy to DigitalOcean
     needs: test
     runs-on: ubuntu-latest
     steps:

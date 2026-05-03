@@ -1,5 +1,5 @@
 import logging
-import requests
+from external import http_client
 
 
 class BinanceApi:
@@ -9,12 +9,12 @@ class BinanceApi:
 
     def call_average_price_by_symbol(self, symbol: str) -> dict:
         try:
-            response = requests.request(
+            response = http_client.request(
                 "GET", f"{self.AVG_PRICE_URL}?symbol={symbol}", timeout=15
             )
             status_code = response.status_code
             if status_code != 200:
-                logging.warn(
+                logging.warning(
                     "BINANCE: call_average_price_by_symbol not getting a 200 response"
                 )
                 return None

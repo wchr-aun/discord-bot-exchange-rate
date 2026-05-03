@@ -28,19 +28,14 @@ async def ping_rates():
             channel = _bot.get_channel(channel_id)
 
             logging.info(f"EXCHANGE: Getting the {pair} rate")
-            while True:
-                rate = _exchange_client.get_rate(base, symbol)
-                if rate is not None:
-                    break
-                logging.warn(
-                    f"EXCHANGE: Getting None from get_rate({pair}) - sending a message and retrying later"
+            rate = _exchange_client.get_rate(base, symbol)
+            
+            if rate is None:
+                logging.warning(
+                    f"EXCHANGE: Getting None from get_rate({pair}) after retries - skipping this cycle"
                 )
-                await attemptSending(
-                    channel,
-                    "EXCHANGE",
-                    f"⚠️ Had trouble getting {pair} rate... Retrying in 1 minute 🕛",
-                )
-                time.sleep(60)
+                continue
+                
             logging.info(f"EXCHANGE: Successfully got the {pair} rate {rate}")
 
             now = datetime.now()

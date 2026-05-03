@@ -19,7 +19,7 @@ def dummy_pem():
 
 def test_revolut_get_gbp_balance_success(dummy_pem):
     api = RevolutApi(dummy_pem, "dummy_key")
-    with patch("requests.request") as mock_req:
+    with patch("external.http_client.request") as mock_req:
         mock_req.return_value.status_code = 200
         mock_req.return_value.json.return_value = [
             {"currency": "GBP", "available": "100.50"},
@@ -33,7 +33,7 @@ def test_revolut_get_gbp_balance_success(dummy_pem):
 
 def test_revolut_place_order_success(dummy_pem):
     api = RevolutApi(dummy_pem, "dummy_key")
-    with patch("requests.request") as mock_req:
+    with patch("external.http_client.request") as mock_req:
         mock_req.return_value.status_code = 201
         mock_req.return_value.json.return_value = {
             "data": {
