@@ -1,0 +1,1 @@
+{"nodes": [{"id": "setup_exchange_pairs", "label": "Exchange Pairs Configuration", "file_type": "code", "source_file": "setup.py", "source_location": 12, "rationale": "Multi-currency support architecture designed for easy scaling by adding pairs to the list."}], "edges": [], "hyperedges": []}

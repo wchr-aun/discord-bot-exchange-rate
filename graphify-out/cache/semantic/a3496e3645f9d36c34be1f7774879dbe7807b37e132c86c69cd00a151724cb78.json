@@ -1,0 +1,1 @@
+{"nodes": [], "edges": [{"source": "exchange_rate_ping_rates", "target": "exchange_rate_on_message", "relation": "semantically_similar_to", "confidence": "INFERRED", "confidence_score": 0.85, "source_file": "features/exchange_rate/__init__.py"}], "hyperedges": []}

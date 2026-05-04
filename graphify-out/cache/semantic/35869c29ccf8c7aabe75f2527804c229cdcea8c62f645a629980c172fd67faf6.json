@@ -1,0 +1,1 @@
+{"nodes": [{"id": "btc_mvrv_ping_mvrv", "label": "BTC MVRV Ping Task", "file_type": "code", "source_file": "features/btc_mvrv/tasks.py", "source_location": 18}], "edges": [{"source": "btc_mvrv_ping_mvrv", "target": "utils_attemptsending", "relation": "calls", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "features/btc_mvrv/tasks.py"}], "hyperedges": []}

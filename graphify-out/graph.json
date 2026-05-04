@@ -1,0 +1,3106 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {
+    "hyperedges": [
+      {
+        "id": "bot_feature_initialization",
+        "label": "Bot Feature Initialization Flow",
+        "nodes": [
+          "logging_setup",
+          "exchange_rate_setup",
+          "btc_mvrv_setup",
+          "revolut_dca_setup"
+        ],
+        "relation": "form",
+        "confidence": "INFERRED",
+        "confidence_score": 0.95,
+        "source_file": "main.py"
+      },
+      {
+        "id": "external_api_clients",
+        "label": "External API Client Layer",
+        "nodes": [
+          "revolut_revolutapi",
+          "blockchain_blockchain",
+          "binance_binanceapi",
+          "apilayer_exchangeapi"
+        ],
+        "relation": "implement",
+        "confidence": "INFERRED",
+        "confidence_score": 0.95,
+        "source_file": "external/"
+      },
+      {
+        "id": "resilient_http_stack",
+        "label": "Resilient HTTP Communication",
+        "nodes": [
+          "http_client_request",
+          "http_client_get_retry_session",
+          "http_client_loggingretry"
+        ],
+        "relation": "form",
+        "confidence": "INFERRED",
+        "confidence_score": 0.95,
+        "source_file": "external/http_client.py"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "label": "setup.py",
+      "file_type": "code",
+      "source_file": "setup.py",
+      "source_location": "L1",
+      "id": "setup_py",
+      "community": 0,
+      "norm_label": "setup.py"
+    },
+    {
+      "label": "get_rate_channel_id()",
+      "file_type": "code",
+      "source_file": "setup.py",
+      "source_location": "L18",
+      "id": "discord_bot_exchange_rate_setup_get_rate_channel_id",
+      "community": 0,
+      "norm_label": "get_rate_channel_id()"
+    },
+    {
+      "label": "main.py",
+      "file_type": "code",
+      "source_file": "main.py",
+      "source_location": "L1",
+      "id": "main_py",
+      "community": 0,
+      "norm_label": "main.py"
+    },
+    {
+      "label": "on_ready()",
+      "file_type": "code",
+      "source_file": "main.py",
+      "source_location": "L38",
+      "id": "discord_bot_exchange_rate_main_on_ready",
+      "community": 0,
+      "norm_label": "on_ready()"
+    },
+    {
+      "label": "on_message()",
+      "file_type": "code",
+      "source_file": "main.py",
+      "source_location": "L64",
+      "id": "discord_bot_exchange_rate_main_on_message",
+      "community": 0,
+      "norm_label": "on_message()"
+    },
+    {
+      "label": "Activate.ps1",
+      "file_type": "code",
+      "source_file": "bin/Activate.ps1",
+      "source_location": "L1",
+      "id": "bin_activate_ps1",
+      "community": 11,
+      "norm_label": "activate.ps1"
+    },
+    {
+      "label": "global:deactivate()",
+      "file_type": "code",
+      "source_file": "bin/Activate.ps1",
+      "source_location": "L73",
+      "id": "bin_activate_global_deactivate",
+      "community": 11,
+      "norm_label": "global:deactivate()"
+    },
+    {
+      "label": "Get-PyVenvConfig()",
+      "file_type": "code",
+      "source_file": "bin/Activate.ps1",
+      "source_location": "L131",
+      "id": "bin_activate_get_pyvenvconfig",
+      "community": 11,
+      "norm_label": "get-pyvenvconfig()"
+    },
+    {
+      "label": "global:_OLD_VIRTUAL_PROMPT()",
+      "file_type": "code",
+      "source_file": "bin/Activate.ps1",
+      "source_location": "L228",
+      "id": "bin_activate_global_old_virtual_prompt",
+      "community": 11,
+      "norm_label": "global:_old_virtual_prompt()"
+    },
+    {
+      "label": "global:prompt()",
+      "file_type": "code",
+      "source_file": "bin/Activate.ps1",
+      "source_location": "L232",
+      "id": "bin_activate_global_prompt",
+      "community": 11,
+      "norm_label": "global:prompt()"
+    },
+    {
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "features/__init__.py",
+      "source_location": "L1",
+      "id": "features_init_py",
+      "community": 15,
+      "norm_label": "__init__.py"
+    },
+    {
+      "label": "utils.py",
+      "file_type": "code",
+      "source_file": "features/utils.py",
+      "source_location": "L1",
+      "id": "features_utils_py",
+      "community": 0,
+      "norm_label": "utils.py"
+    },
+    {
+      "label": "attemptSending()",
+      "file_type": "code",
+      "source_file": "features/utils.py",
+      "source_location": "L3",
+      "id": "features_utils_attemptsending",
+      "community": 0,
+      "norm_label": "attemptsending()"
+    },
+    {
+      "label": "tasks.py",
+      "file_type": "code",
+      "source_file": "features/btc_mvrv/tasks.py",
+      "source_location": "L1",
+      "id": "features_btc_mvrv_tasks_py",
+      "community": 0,
+      "norm_label": "tasks.py"
+    },
+    {
+      "label": "ping_mvrv()",
+      "file_type": "code",
+      "source_file": "features/btc_mvrv/tasks.py",
+      "source_location": "L18",
+      "id": "btc_mvrv_tasks_ping_mvrv",
+      "community": 0,
+      "norm_label": "ping_mvrv()"
+    },
+    {
+      "label": "before_ping_mvrv_loop()",
+      "file_type": "code",
+      "source_file": "features/btc_mvrv/tasks.py",
+      "source_location": "L45",
+      "id": "btc_mvrv_tasks_before_ping_mvrv_loop",
+      "community": 0,
+      "norm_label": "before_ping_mvrv_loop()"
+    },
+    {
+      "label": "setup_tasks()",
+      "file_type": "code",
+      "source_file": "features/btc_mvrv/tasks.py",
+      "source_location": "L52",
+      "id": "btc_mvrv_tasks_setup_tasks",
+      "community": 0,
+      "norm_label": "setup_tasks()"
+    },
+    {
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "features/btc_mvrv/__init__.py",
+      "source_location": "L1",
+      "id": "features_btc_mvrv_init_py",
+      "community": 0,
+      "norm_label": "__init__.py"
+    },
+    {
+      "label": "setup()",
+      "file_type": "code",
+      "source_file": "features/btc_mvrv/__init__.py",
+      "source_location": "L4",
+      "id": "btc_mvrv_init_setup",
+      "community": 0,
+      "norm_label": "setup()"
+    },
+    {
+      "label": "tasks.py",
+      "file_type": "code",
+      "source_file": "features/revolut_dca/tasks.py",
+      "source_location": "L1",
+      "id": "features_revolut_dca_tasks_py",
+      "community": 4,
+      "norm_label": "tasks.py"
+    },
+    {
+      "label": "run_dca_logic()",
+      "file_type": "code",
+      "source_file": "features/revolut_dca/tasks.py",
+      "source_location": "L23",
+      "id": "revolut_dca_tasks_run_dca_logic",
+      "community": 0,
+      "norm_label": "run_dca_logic()"
+    },
+    {
+      "label": "revolut_dca_task()",
+      "file_type": "code",
+      "source_file": "features/revolut_dca/tasks.py",
+      "source_location": "L81",
+      "id": "revolut_dca_tasks_revolut_dca_task",
+      "community": 1,
+      "norm_label": "revolut_dca_task()"
+    },
+    {
+      "label": "before_revolut_dca_task()",
+      "file_type": "code",
+      "source_file": "features/revolut_dca/tasks.py",
+      "source_location": "L96",
+      "id": "revolut_dca_tasks_before_revolut_dca_task",
+      "community": 4,
+      "norm_label": "before_revolut_dca_task()"
+    },
+    {
+      "label": "setup_tasks()",
+      "file_type": "code",
+      "source_file": "features/revolut_dca/tasks.py",
+      "source_location": "L109",
+      "id": "revolut_dca_tasks_setup_tasks",
+      "community": 4,
+      "norm_label": "setup_tasks()"
+    },
+    {
+      "label": "handlers.py",
+      "file_type": "code",
+      "source_file": "features/revolut_dca/handlers.py",
+      "source_location": "L1",
+      "id": "features_revolut_dca_handlers_py",
+      "community": 4,
+      "norm_label": "handlers.py"
+    },
+    {
+      "label": "on_message()",
+      "file_type": "code",
+      "source_file": "features/revolut_dca/handlers.py",
+      "source_location": "L9",
+      "id": "revolut_dca_handlers_on_message",
+      "community": 4,
+      "norm_label": "on_message()"
+    },
+    {
+      "label": "setup_handlers()",
+      "file_type": "code",
+      "source_file": "features/revolut_dca/handlers.py",
+      "source_location": "L51",
+      "id": "revolut_dca_handlers_setup_handlers",
+      "community": 4,
+      "norm_label": "setup_handlers()"
+    },
+    {
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "features/revolut_dca/__init__.py",
+      "source_location": "L1",
+      "id": "features_revolut_dca_init_py",
+      "community": 4,
+      "norm_label": "__init__.py"
+    },
+    {
+      "label": "setup()",
+      "file_type": "code",
+      "source_file": "features/revolut_dca/__init__.py",
+      "source_location": "L5",
+      "id": "revolut_dca_init_setup",
+      "community": 4,
+      "norm_label": "setup()"
+    },
+    {
+      "label": "utils.py",
+      "file_type": "code",
+      "source_file": "features/revolut_dca/utils.py",
+      "source_location": "L1",
+      "id": "features_revolut_dca_utils_py",
+      "community": 4,
+      "norm_label": "utils.py"
+    },
+    {
+      "label": "get_next_execution_datetime()",
+      "file_type": "code",
+      "source_file": "features/revolut_dca/utils.py",
+      "source_location": "L5",
+      "id": "revolut_dca_utils_get_next_execution_datetime",
+      "community": 4,
+      "norm_label": "get_next_execution_datetime()"
+    },
+    {
+      "label": "get_upcoming_execution_date_str()",
+      "file_type": "code",
+      "source_file": "features/revolut_dca/utils.py",
+      "source_location": "L22",
+      "id": "revolut_dca_utils_get_upcoming_execution_date_str",
+      "community": 4,
+      "norm_label": "get_upcoming_execution_date_str()"
+    },
+    {
+      "label": "is_execution_day()",
+      "file_type": "code",
+      "source_file": "features/revolut_dca/utils.py",
+      "source_location": "L26",
+      "id": "revolut_dca_utils_is_execution_day",
+      "community": 1,
+      "norm_label": "is_execution_day()"
+    },
+    {
+      "label": "get_seconds_to_next_execution_hour()",
+      "file_type": "code",
+      "source_file": "features/revolut_dca/utils.py",
+      "source_location": "L32",
+      "id": "revolut_dca_utils_get_seconds_to_next_execution_hour",
+      "community": 4,
+      "norm_label": "get_seconds_to_next_execution_hour()"
+    },
+    {
+      "label": "handler.py",
+      "file_type": "code",
+      "source_file": "features/logging/handler.py",
+      "source_location": "L1",
+      "id": "features_logging_handler_py",
+      "community": 6,
+      "norm_label": "handler.py"
+    },
+    {
+      "label": "DiscordHandler",
+      "file_type": "code",
+      "source_file": "features/logging/handler.py",
+      "source_location": "L7",
+      "id": "logging_handler_discordhandler",
+      "community": 6,
+      "norm_label": "discordhandler"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "features/logging/handler.py",
+      "source_location": "L8",
+      "id": "logging_handler_discordhandler_init",
+      "community": 6,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".emit()",
+      "file_type": "code",
+      "source_file": "features/logging/handler.py",
+      "source_location": "L16",
+      "id": "logging_handler_discordhandler_emit",
+      "community": 6,
+      "norm_label": ".emit()"
+    },
+    {
+      "label": "._wait_and_flush()",
+      "file_type": "code",
+      "source_file": "features/logging/handler.py",
+      "source_location": "L31",
+      "id": "logging_handler_discordhandler_wait_and_flush",
+      "community": 6,
+      "norm_label": "._wait_and_flush()"
+    },
+    {
+      "label": ".flush_buffer()",
+      "file_type": "code",
+      "source_file": "features/logging/handler.py",
+      "source_location": "L38",
+      "id": "logging_handler_discordhandler_flush_buffer",
+      "community": 6,
+      "norm_label": ".flush_buffer()"
+    },
+    {
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "features/logging/__init__.py",
+      "source_location": "L1",
+      "id": "features_logging_init_py",
+      "community": 6,
+      "norm_label": "__init__.py"
+    },
+    {
+      "label": "setup()",
+      "file_type": "code",
+      "source_file": "features/logging/__init__.py",
+      "source_location": "L6",
+      "id": "logging_init_setup",
+      "community": 6,
+      "norm_label": "setup()"
+    },
+    {
+      "label": "tasks.py",
+      "file_type": "code",
+      "source_file": "features/exchange_rate/tasks.py",
+      "source_location": "L1",
+      "id": "features_exchange_rate_tasks_py",
+      "community": 0,
+      "norm_label": "tasks.py"
+    },
+    {
+      "label": "ping_rates()",
+      "file_type": "code",
+      "source_file": "features/exchange_rate/tasks.py",
+      "source_location": "L22",
+      "id": "exchange_rate_tasks_ping_rates",
+      "community": 0,
+      "norm_label": "ping_rates()"
+    },
+    {
+      "label": "before_ping_rates_loop()",
+      "file_type": "code",
+      "source_file": "features/exchange_rate/tasks.py",
+      "source_location": "L61",
+      "id": "exchange_rate_tasks_before_ping_rates_loop",
+      "community": 0,
+      "norm_label": "before_ping_rates_loop()"
+    },
+    {
+      "label": "setup_tasks()",
+      "file_type": "code",
+      "source_file": "features/exchange_rate/tasks.py",
+      "source_location": "L68",
+      "id": "exchange_rate_tasks_setup_tasks",
+      "community": 0,
+      "norm_label": "setup_tasks()"
+    },
+    {
+      "label": "handlers.py",
+      "file_type": "code",
+      "source_file": "features/exchange_rate/handlers.py",
+      "source_location": "L1",
+      "id": "features_exchange_rate_handlers_py",
+      "community": 0,
+      "norm_label": "handlers.py"
+    },
+    {
+      "label": "on_message()",
+      "file_type": "code",
+      "source_file": "features/exchange_rate/handlers.py",
+      "source_location": "L14",
+      "id": "exchange_rate_handlers_on_message",
+      "community": 0,
+      "norm_label": "on_message()"
+    },
+    {
+      "label": "setup_handlers()",
+      "file_type": "code",
+      "source_file": "features/exchange_rate/handlers.py",
+      "source_location": "L74",
+      "id": "exchange_rate_handlers_setup_handlers",
+      "community": 0,
+      "norm_label": "setup_handlers()"
+    },
+    {
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "features/exchange_rate/__init__.py",
+      "source_location": "L1",
+      "id": "features_exchange_rate_init_py",
+      "community": 0,
+      "norm_label": "__init__.py"
+    },
+    {
+      "label": "setup()",
+      "file_type": "code",
+      "source_file": "features/exchange_rate/__init__.py",
+      "source_location": "L5",
+      "id": "exchange_rate_init_setup",
+      "community": 0,
+      "norm_label": "setup()"
+    },
+    {
+      "label": "conftest.py",
+      "file_type": "code",
+      "source_file": "tests/conftest.py",
+      "source_location": "L1",
+      "id": "tests_conftest_py",
+      "community": 13,
+      "norm_label": "conftest.py"
+    },
+    {
+      "label": "firebase_mock()",
+      "file_type": "code",
+      "source_file": "tests/conftest.py",
+      "source_location": "L38",
+      "id": "tests_conftest_firebase_mock",
+      "community": 13,
+      "norm_label": "firebase_mock()"
+    },
+    {
+      "label": "test_exchange.py",
+      "file_type": "code",
+      "source_file": "tests/test_exchange.py",
+      "source_location": "L1",
+      "id": "tests_test_exchange_py",
+      "community": 12,
+      "norm_label": "test_exchange.py"
+    },
+    {
+      "label": "test_on_message_set_rate_default()",
+      "file_type": "code",
+      "source_file": "tests/test_exchange.py",
+      "source_location": "L6",
+      "id": "tests_test_exchange_test_on_message_set_rate_default",
+      "community": 12,
+      "norm_label": "test_on_message_set_rate_default()"
+    },
+    {
+      "label": "test_on_message_get_rate()",
+      "file_type": "code",
+      "source_file": "tests/test_exchange.py",
+      "source_location": "L24",
+      "id": "tests_test_exchange_test_on_message_get_rate",
+      "community": 12,
+      "norm_label": "test_on_message_get_rate()"
+    },
+    {
+      "label": "test_revolut.py",
+      "file_type": "code",
+      "source_file": "tests/test_revolut.py",
+      "source_location": "L1",
+      "id": "tests_test_revolut_py",
+      "community": 1,
+      "norm_label": "test_revolut.py"
+    },
+    {
+      "label": "dummy_pem()",
+      "file_type": "code",
+      "source_file": "tests/test_revolut.py",
+      "source_location": "L11",
+      "id": "tests_test_revolut_dummy_pem",
+      "community": 1,
+      "norm_label": "dummy_pem()"
+    },
+    {
+      "label": "test_revolut_get_gbp_balance_success()",
+      "file_type": "code",
+      "source_file": "tests/test_revolut.py",
+      "source_location": "L20",
+      "id": "tests_test_revolut_test_revolut_get_gbp_balance_success",
+      "community": 1,
+      "norm_label": "test_revolut_get_gbp_balance_success()"
+    },
+    {
+      "label": "test_revolut_place_order_success()",
+      "file_type": "code",
+      "source_file": "tests/test_revolut.py",
+      "source_location": "L34",
+      "id": "tests_test_revolut_test_revolut_place_order_success",
+      "community": 1,
+      "norm_label": "test_revolut_place_order_success()"
+    },
+    {
+      "label": "test_revolut_dca_task_skips_if_not_sunday()",
+      "file_type": "code",
+      "source_file": "tests/test_revolut.py",
+      "source_location": "L52",
+      "id": "tests_test_revolut_test_revolut_dca_task_skips_if_not_sunday",
+      "community": 1,
+      "norm_label": "test_revolut_dca_task_skips_if_not_sunday()"
+    },
+    {
+      "label": "test_revolut_dca_task_runs_on_sunday()",
+      "file_type": "code",
+      "source_file": "tests/test_revolut.py",
+      "source_location": "L69",
+      "id": "tests_test_revolut_test_revolut_dca_task_runs_on_sunday",
+      "community": 1,
+      "norm_label": "test_revolut_dca_task_runs_on_sunday()"
+    },
+    {
+      "label": "test_revolut_dca_task_skips_if_firebase_says_so()",
+      "file_type": "code",
+      "source_file": "tests/test_revolut.py",
+      "source_location": "L106",
+      "id": "tests_test_revolut_test_revolut_dca_task_skips_if_firebase_says_so",
+      "community": 1,
+      "norm_label": "test_revolut_dca_task_skips_if_firebase_says_so()"
+    },
+    {
+      "label": "test_revolut_dca_task_insufficient_balance()",
+      "file_type": "code",
+      "source_file": "tests/test_revolut.py",
+      "source_location": "L148",
+      "id": "tests_test_revolut_test_revolut_dca_task_insufficient_balance",
+      "community": 1,
+      "norm_label": "test_revolut_dca_task_insufficient_balance()"
+    },
+    {
+      "label": "test_http_client.py",
+      "file_type": "code",
+      "source_file": "tests/test_http_client.py",
+      "source_location": "L1",
+      "id": "tests_test_http_client_py",
+      "community": 7,
+      "norm_label": "test_http_client.py"
+    },
+    {
+      "label": "test_request_success()",
+      "file_type": "code",
+      "source_file": "tests/test_http_client.py",
+      "source_location": "L7",
+      "id": "tests_test_http_client_test_request_success",
+      "community": 7,
+      "norm_label": "test_request_success()"
+    },
+    {
+      "label": "test_request_default_timeout()",
+      "file_type": "code",
+      "source_file": "tests/test_http_client.py",
+      "source_location": "L18",
+      "id": "tests_test_http_client_test_request_default_timeout",
+      "community": 7,
+      "norm_label": "test_request_default_timeout()"
+    },
+    {
+      "label": "test_request_custom_timeout()",
+      "file_type": "code",
+      "source_file": "tests/test_http_client.py",
+      "source_location": "L25",
+      "id": "tests_test_http_client_test_request_custom_timeout",
+      "community": 7,
+      "norm_label": "test_request_custom_timeout()"
+    },
+    {
+      "label": "test_retry_configuration()",
+      "file_type": "code",
+      "source_file": "tests/test_http_client.py",
+      "source_location": "L31",
+      "id": "tests_test_http_client_test_retry_configuration",
+      "community": 7,
+      "norm_label": "test_retry_configuration()"
+    },
+    {
+      "label": "test_custom_retry_config_integration()",
+      "file_type": "code",
+      "source_file": "tests/test_http_client.py",
+      "source_location": "L48",
+      "id": "tests_test_http_client_test_custom_retry_config_integration",
+      "community": 7,
+      "norm_label": "test_custom_retry_config_integration()"
+    },
+    {
+      "label": "Verify that the retry session is correctly configured with LoggingRetry.",
+      "file_type": "rationale",
+      "source_file": "tests/test_http_client.py",
+      "source_location": "L32",
+      "id": "tests_test_http_client_rationale_32",
+      "community": 7,
+      "norm_label": "verify that the retry session is correctly configured with loggingretry."
+    },
+    {
+      "label": "Verify that passing retry_config to request() uses a new session with those sett",
+      "file_type": "rationale",
+      "source_file": "tests/test_http_client.py",
+      "source_location": "L49",
+      "id": "tests_test_http_client_rationale_49",
+      "community": 7,
+      "norm_label": "verify that passing retry_config to request() uses a new session with those sett"
+    },
+    {
+      "label": "test_external.py",
+      "file_type": "code",
+      "source_file": "tests/test_external.py",
+      "source_location": "L1",
+      "id": "tests_test_external_py",
+      "community": 3,
+      "norm_label": "test_external.py"
+    },
+    {
+      "label": "test_apilayer_get_rate_success()",
+      "file_type": "code",
+      "source_file": "tests/test_external.py",
+      "source_location": "L8",
+      "id": "tests_test_external_test_apilayer_get_rate_success",
+      "community": 3,
+      "norm_label": "test_apilayer_get_rate_success()"
+    },
+    {
+      "label": "test_binance_get_btc_price_success()",
+      "file_type": "code",
+      "source_file": "tests/test_external.py",
+      "source_location": "L20",
+      "id": "tests_test_external_test_binance_get_btc_price_success",
+      "community": 10,
+      "norm_label": "test_binance_get_btc_price_success()"
+    },
+    {
+      "label": "test_blockchain_get_mvrv_success()",
+      "file_type": "code",
+      "source_file": "tests/test_external.py",
+      "source_location": "L30",
+      "id": "tests_test_external_test_blockchain_get_mvrv_success",
+      "community": 3,
+      "norm_label": "test_blockchain_get_mvrv_success()"
+    },
+    {
+      "label": "test_main.py",
+      "file_type": "code",
+      "source_file": "tests/test_main.py",
+      "source_location": "L1",
+      "id": "tests_test_main_py",
+      "community": 0,
+      "norm_label": "test_main.py"
+    },
+    {
+      "label": "test_ping_rates()",
+      "file_type": "code",
+      "source_file": "tests/test_main.py",
+      "source_location": "L7",
+      "id": "tests_test_main_test_ping_rates",
+      "community": 0,
+      "norm_label": "test_ping_rates()"
+    },
+    {
+      "label": "test_ping_mvrv()",
+      "file_type": "code",
+      "source_file": "tests/test_main.py",
+      "source_location": "L29",
+      "id": "tests_test_main_test_ping_mvrv",
+      "community": 0,
+      "norm_label": "test_ping_mvrv()"
+    },
+    {
+      "label": "test_firebase.py",
+      "file_type": "code",
+      "source_file": "tests/test_firebase.py",
+      "source_location": "L1",
+      "id": "tests_test_firebase_py",
+      "community": 2,
+      "norm_label": "test_firebase.py"
+    },
+    {
+      "label": "test_firebase_set_profile_rates()",
+      "file_type": "code",
+      "source_file": "tests/test_firebase.py",
+      "source_location": "L6",
+      "id": "tests_test_firebase_test_firebase_set_profile_rates",
+      "community": 2,
+      "norm_label": "test_firebase_set_profile_rates()"
+    },
+    {
+      "label": "test_firebase_get_profile_rates_exists()",
+      "file_type": "code",
+      "source_file": "tests/test_firebase.py",
+      "source_location": "L25",
+      "id": "tests_test_firebase_test_firebase_get_profile_rates_exists",
+      "community": 2,
+      "norm_label": "test_firebase_get_profile_rates_exists()"
+    },
+    {
+      "label": "test_firebase_dca_skip_decision()",
+      "file_type": "code",
+      "source_file": "tests/test_firebase.py",
+      "source_location": "L39",
+      "id": "tests_test_firebase_test_firebase_dca_skip_decision",
+      "community": 2,
+      "norm_label": "test_firebase_dca_skip_decision()"
+    },
+    {
+      "label": "http_client.py",
+      "file_type": "code",
+      "source_file": "external/http_client.py",
+      "source_location": "L1",
+      "id": "external_http_client_py",
+      "community": 5,
+      "norm_label": "http_client.py"
+    },
+    {
+      "label": "LoggingRetry",
+      "file_type": "code",
+      "source_file": "external/http_client.py",
+      "source_location": "L9",
+      "id": "external_http_client_loggingretry",
+      "community": 5,
+      "norm_label": "loggingretry"
+    },
+    {
+      "label": "Retry",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "id": "retry",
+      "community": 5,
+      "norm_label": "retry"
+    },
+    {
+      "label": ".increment()",
+      "file_type": "code",
+      "source_file": "external/http_client.py",
+      "source_location": "L14",
+      "id": "external_http_client_loggingretry_increment",
+      "community": 5,
+      "norm_label": ".increment()"
+    },
+    {
+      "label": "get_retry_session()",
+      "file_type": "code",
+      "source_file": "external/http_client.py",
+      "source_location": "L40",
+      "id": "external_http_client_get_retry_session",
+      "community": 5,
+      "norm_label": "get_retry_session()"
+    },
+    {
+      "label": "request()",
+      "file_type": "code",
+      "source_file": "external/http_client.py",
+      "source_location": "L70",
+      "id": "external_http_client_request",
+      "community": 5,
+      "norm_label": "request()"
+    },
+    {
+      "label": "Custom Retry class that logs each retry attempt.",
+      "file_type": "rationale",
+      "source_file": "external/http_client.py",
+      "source_location": "L10",
+      "id": "external_http_client_rationale_10",
+      "community": 5,
+      "norm_label": "custom retry class that logs each retry attempt."
+    },
+    {
+      "label": "Creates a requests.Session with retry logic.     Handles retries for both specif",
+      "file_type": "rationale",
+      "source_file": "external/http_client.py",
+      "source_location": "L46",
+      "id": "external_http_client_rationale_46",
+      "community": 5,
+      "norm_label": "creates a requests.session with retry logic.     handles retries for both specif"
+    },
+    {
+      "label": "A wrapper around requests.request that provides automatic retries.      By defau",
+      "file_type": "rationale",
+      "source_file": "external/http_client.py",
+      "source_location": "L71",
+      "id": "external_http_client_rationale_71",
+      "community": 5,
+      "norm_label": "a wrapper around requests.request that provides automatic retries.      by defau"
+    },
+    {
+      "label": "Revolut.py",
+      "file_type": "code",
+      "source_file": "external/Revolut.py",
+      "source_location": "L1",
+      "id": "external_revolut_py",
+      "community": 1,
+      "norm_label": "revolut.py"
+    },
+    {
+      "label": "RevolutApi",
+      "file_type": "code",
+      "source_file": "external/Revolut.py",
+      "source_location": "L15",
+      "id": "external_revolut_revolutapi",
+      "community": 1,
+      "norm_label": "revolutapi"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "external/Revolut.py",
+      "source_location": "L16",
+      "id": "external_revolut_revolutapi_init",
+      "community": 1,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": "._get_signature()",
+      "file_type": "code",
+      "source_file": "external/Revolut.py",
+      "source_location": "L23",
+      "id": "external_revolut_revolutapi_get_signature",
+      "community": 1,
+      "norm_label": "._get_signature()"
+    },
+    {
+      "label": ".get_balances()",
+      "file_type": "code",
+      "source_file": "external/Revolut.py",
+      "source_location": "L28",
+      "id": "external_revolut_revolutapi_get_balances",
+      "community": 1,
+      "norm_label": ".get_balances()"
+    },
+    {
+      "label": ".get_gbp_balance()",
+      "file_type": "code",
+      "source_file": "external/Revolut.py",
+      "source_location": "L56",
+      "id": "external_revolut_revolutapi_get_gbp_balance",
+      "community": 1,
+      "norm_label": ".get_gbp_balance()"
+    },
+    {
+      "label": ".place_order()",
+      "file_type": "code",
+      "source_file": "external/Revolut.py",
+      "source_location": "L65",
+      "id": "external_revolut_revolutapi_place_order",
+      "community": 1,
+      "norm_label": ".place_order()"
+    },
+    {
+      "label": "Blockchain.py",
+      "file_type": "code",
+      "source_file": "external/Blockchain.py",
+      "source_location": "L1",
+      "id": "external_blockchain_py",
+      "community": 3,
+      "norm_label": "blockchain.py"
+    },
+    {
+      "label": "Blockchain",
+      "file_type": "code",
+      "source_file": "external/Blockchain.py",
+      "source_location": "L7",
+      "id": "external_blockchain_blockchain",
+      "community": 3,
+      "norm_label": "blockchain"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "external/Blockchain.py",
+      "source_location": "L9",
+      "id": "external_blockchain_blockchain_init",
+      "community": 3,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".call_blockchain_com_chart_api()",
+      "file_type": "code",
+      "source_file": "external/Blockchain.py",
+      "source_location": "L12",
+      "id": "external_blockchain_blockchain_call_blockchain_com_chart_api",
+      "community": 3,
+      "norm_label": ".call_blockchain_com_chart_api()"
+    },
+    {
+      "label": ".get_mvrv()",
+      "file_type": "code",
+      "source_file": "external/Blockchain.py",
+      "source_location": "L26",
+      "id": "external_blockchain_blockchain_get_mvrv",
+      "community": 3,
+      "norm_label": ".get_mvrv()"
+    },
+    {
+      "label": "Firebase.py",
+      "file_type": "code",
+      "source_file": "external/Firebase.py",
+      "source_location": "L1",
+      "id": "external_firebase_py",
+      "community": 2,
+      "norm_label": "firebase.py"
+    },
+    {
+      "label": "Firebase",
+      "file_type": "code",
+      "source_file": "external/Firebase.py",
+      "source_location": "L9",
+      "id": "external_firebase_firebase",
+      "community": 2,
+      "norm_label": "firebase"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "external/Firebase.py",
+      "source_location": "L10",
+      "id": "external_firebase_firebase_init",
+      "community": 2,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": "._get_profile_collection()",
+      "file_type": "code",
+      "source_file": "external/Firebase.py",
+      "source_location": "L16",
+      "id": "external_firebase_firebase_get_profile_collection",
+      "community": 2,
+      "norm_label": "._get_profile_collection()"
+    },
+    {
+      "label": ".set_profile_rates()",
+      "file_type": "code",
+      "source_file": "external/Firebase.py",
+      "source_location": "L20",
+      "id": "external_firebase_firebase_set_profile_rates",
+      "community": 2,
+      "norm_label": ".set_profile_rates()"
+    },
+    {
+      "label": ".get_profile_rates()",
+      "file_type": "code",
+      "source_file": "external/Firebase.py",
+      "source_location": "L27",
+      "id": "external_firebase_firebase_get_profile_rates",
+      "community": 2,
+      "norm_label": ".get_profile_rates()"
+    },
+    {
+      "label": ".get_profile_rates_less_than()",
+      "file_type": "code",
+      "source_file": "external/Firebase.py",
+      "source_location": "L38",
+      "id": "external_firebase_firebase_get_profile_rates_less_than",
+      "community": 2,
+      "norm_label": ".get_profile_rates_less_than()"
+    },
+    {
+      "label": ".get_latest_mvrv_timestamp()",
+      "file_type": "code",
+      "source_file": "external/Firebase.py",
+      "source_location": "L42",
+      "id": "external_firebase_firebase_get_latest_mvrv_timestamp",
+      "community": 2,
+      "norm_label": ".get_latest_mvrv_timestamp()"
+    },
+    {
+      "label": ".set_latest_mvrv_timestamp()",
+      "file_type": "code",
+      "source_file": "external/Firebase.py",
+      "source_location": "L49",
+      "id": "external_firebase_firebase_set_latest_mvrv_timestamp",
+      "community": 2,
+      "norm_label": ".set_latest_mvrv_timestamp()"
+    },
+    {
+      "label": ".is_for_property_id_pinged()",
+      "file_type": "code",
+      "source_file": "external/Firebase.py",
+      "source_location": "L56",
+      "id": "external_firebase_firebase_is_for_property_id_pinged",
+      "community": 2,
+      "norm_label": ".is_for_property_id_pinged()"
+    },
+    {
+      "label": ".save_for_property_id()",
+      "file_type": "code",
+      "source_file": "external/Firebase.py",
+      "source_location": "L63",
+      "id": "external_firebase_firebase_save_for_property_id",
+      "community": 2,
+      "norm_label": ".save_for_property_id()"
+    },
+    {
+      "label": ".get_dca_skip_decision()",
+      "file_type": "code",
+      "source_file": "external/Firebase.py",
+      "source_location": "L67",
+      "id": "external_firebase_firebase_get_dca_skip_decision",
+      "community": 2,
+      "norm_label": ".get_dca_skip_decision()"
+    },
+    {
+      "label": ".set_dca_skip_decision()",
+      "file_type": "code",
+      "source_file": "external/Firebase.py",
+      "source_location": "L74",
+      "id": "external_firebase_firebase_set_dca_skip_decision",
+      "community": 2,
+      "norm_label": ".set_dca_skip_decision()"
+    },
+    {
+      "label": "Binance.py",
+      "file_type": "code",
+      "source_file": "external/Binance.py",
+      "source_location": "L1",
+      "id": "external_binance_py",
+      "community": 10,
+      "norm_label": "binance.py"
+    },
+    {
+      "label": "BinanceApi",
+      "file_type": "code",
+      "source_file": "external/Binance.py",
+      "source_location": "L5",
+      "id": "external_binance_binanceapi",
+      "community": 10,
+      "norm_label": "binanceapi"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "external/Binance.py",
+      "source_location": "L7",
+      "id": "external_binance_binanceapi_init",
+      "community": 10,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".call_average_price_by_symbol()",
+      "file_type": "code",
+      "source_file": "external/Binance.py",
+      "source_location": "L10",
+      "id": "external_binance_binanceapi_call_average_price_by_symbol",
+      "community": 10,
+      "norm_label": ".call_average_price_by_symbol()"
+    },
+    {
+      "label": ".get_btc_price()",
+      "file_type": "code",
+      "source_file": "external/Binance.py",
+      "source_location": "L26",
+      "id": "external_binance_binanceapi_get_btc_price",
+      "community": 10,
+      "norm_label": ".get_btc_price()"
+    },
+    {
+      "label": "ApiLayer.py",
+      "file_type": "code",
+      "source_file": "external/ApiLayer.py",
+      "source_location": "L1",
+      "id": "external_apilayer_py",
+      "community": 3,
+      "norm_label": "apilayer.py"
+    },
+    {
+      "label": "ExchangeAPI",
+      "file_type": "code",
+      "source_file": "external/ApiLayer.py",
+      "source_location": "L7",
+      "id": "external_apilayer_exchangeapi",
+      "community": 3,
+      "norm_label": "exchangeapi"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "external/ApiLayer.py",
+      "source_location": "L9",
+      "id": "external_apilayer_exchangeapi_init",
+      "community": 3,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".get_rates()",
+      "file_type": "code",
+      "source_file": "external/ApiLayer.py",
+      "source_location": "L13",
+      "id": "external_apilayer_exchangeapi_get_rates",
+      "community": 3,
+      "norm_label": ".get_rates()"
+    },
+    {
+      "label": ".get_rate()",
+      "file_type": "code",
+      "source_file": "external/ApiLayer.py",
+      "source_location": "L34",
+      "id": "external_apilayer_exchangeapi_get_rate",
+      "community": 3,
+      "norm_label": ".get_rate()"
+    },
+    {
+      "label": "Discord Bot Client",
+      "file_type": "code",
+      "source_file": "main.py",
+      "source_location": 21,
+      "id": "main_client",
+      "community": 16,
+      "norm_label": "discord bot client"
+    },
+    {
+      "label": "Bot Ready Event",
+      "file_type": "code",
+      "source_file": "main.py",
+      "source_location": 36,
+      "id": "main_on_ready",
+      "community": 17,
+      "norm_label": "bot ready event"
+    },
+    {
+      "label": "Global Message Handler",
+      "file_type": "code",
+      "source_file": "main.py",
+      "source_location": 65,
+      "id": "main_on_message",
+      "community": 8,
+      "norm_label": "global message handler"
+    },
+    {
+      "label": "Exchange Pairs Configuration",
+      "file_type": "code",
+      "source_file": "setup.py",
+      "source_location": 12,
+      "rationale": "Multi-currency support architecture designed for easy scaling by adding pairs to the list.",
+      "id": "setup_exchange_pairs",
+      "community": 8,
+      "norm_label": "exchange pairs configuration"
+    },
+    {
+      "label": "Attempt Sending Utility",
+      "file_type": "code",
+      "source_file": "features/utils.py",
+      "source_location": 3,
+      "id": "utils_attemptsending",
+      "community": 8,
+      "norm_label": "attempt sending utility"
+    },
+    {
+      "label": "BTC MVRV Ping Task",
+      "file_type": "code",
+      "source_file": "features/btc_mvrv/tasks.py",
+      "source_location": 18,
+      "id": "btc_mvrv_ping_mvrv",
+      "community": 8,
+      "norm_label": "btc mvrv ping task"
+    },
+    {
+      "label": "Revolut DCA Logic",
+      "file_type": "code",
+      "source_file": "features/revolut_dca/tasks.py",
+      "source_location": 24,
+      "id": "revolut_dca_run_dca_logic",
+      "community": 8,
+      "norm_label": "revolut dca logic"
+    },
+    {
+      "label": "Revolut DCA Command Handler",
+      "file_type": "code",
+      "source_file": "features/revolut_dca/handlers.py",
+      "source_location": 8,
+      "id": "revolut_dca_on_message",
+      "community": 8,
+      "norm_label": "revolut dca command handler"
+    },
+    {
+      "label": "Discord Logging Handler",
+      "file_type": "code",
+      "source_file": "features/logging/handler.py",
+      "source_location": 6,
+      "rationale": "Buffers log messages and flushes them to a Discord channel, with logic to prevent infinite recursion if Discord API itself logs errors.",
+      "id": "logging_discordhandler",
+      "community": 18,
+      "norm_label": "discord logging handler"
+    },
+    {
+      "label": "Exchange Rate Ping Task",
+      "file_type": "code",
+      "source_file": "features/exchange_rate/tasks.py",
+      "source_location": 23,
+      "id": "exchange_rate_ping_rates",
+      "community": 8,
+      "norm_label": "exchange rate ping task"
+    },
+    {
+      "label": "Exchange Rate Command Handler",
+      "file_type": "code",
+      "source_file": "features/exchange_rate/handlers.py",
+      "source_location": 15,
+      "id": "exchange_rate_on_message",
+      "community": 8,
+      "norm_label": "exchange rate command handler"
+    },
+    {
+      "label": "Firebase Mock Fixture",
+      "file_type": "code",
+      "source_file": "tests/conftest.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "conftest_firebase_mock",
+      "community": 14,
+      "norm_label": "firebase mock fixture"
+    },
+    {
+      "label": "LoggingRetry",
+      "file_type": "code",
+      "source_file": "external/http_client.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "http_client_loggingretry",
+      "community": 9,
+      "norm_label": "loggingretry"
+    },
+    {
+      "label": "get_retry_session",
+      "file_type": "code",
+      "source_file": "external/http_client.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "http_client_get_retry_session",
+      "community": 9,
+      "norm_label": "get_retry_session"
+    },
+    {
+      "label": "request",
+      "file_type": "code",
+      "source_file": "external/http_client.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "http_client_request",
+      "community": 9,
+      "norm_label": "request"
+    },
+    {
+      "label": "RevolutApi",
+      "file_type": "code",
+      "source_file": "external/Revolut.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "revolut_revolutapi",
+      "community": 9,
+      "norm_label": "revolutapi"
+    },
+    {
+      "label": "Blockchain",
+      "file_type": "code",
+      "source_file": "external/Blockchain.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "blockchain_blockchain",
+      "community": 9,
+      "norm_label": "blockchain"
+    },
+    {
+      "label": "Firebase",
+      "file_type": "code",
+      "source_file": "external/Firebase.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "firebase_firebase",
+      "community": 14,
+      "norm_label": "firebase"
+    },
+    {
+      "label": "BinanceApi",
+      "file_type": "code",
+      "source_file": "external/Binance.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "binance_binanceapi",
+      "community": 9,
+      "norm_label": "binanceapi"
+    },
+    {
+      "label": "ExchangeAPI",
+      "file_type": "code",
+      "source_file": "external/ApiLayer.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "apilayer_exchangeapi",
+      "community": 9,
+      "norm_label": "exchangeapi"
+    },
+    {
+      "label": "Setup Instructions",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "readme_setup",
+      "community": 19,
+      "norm_label": "setup instructions"
+    },
+    {
+      "label": "Graphify Project Rules",
+      "file_type": "rationale",
+      "source_file": "GEMINI.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "gemini_graphify_rules",
+      "community": 20,
+      "norm_label": "graphify project rules"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "setup.py",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "setup_py",
+      "target": "discord_bot_exchange_rate_setup_get_rate_channel_id",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "features/exchange_rate/tasks.py",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "exchange_rate_tasks_ping_rates",
+      "target": "discord_bot_exchange_rate_setup_get_rate_channel_id"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "main.py",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "main_py",
+      "target": "discord_bot_exchange_rate_main_on_ready",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "main.py",
+      "source_location": "L64",
+      "weight": 1.0,
+      "source": "main_py",
+      "target": "discord_bot_exchange_rate_main_on_message",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "main.py",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "discord_bot_exchange_rate_main_on_ready",
+      "target": "features_utils_attemptsending"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "bin/Activate.ps1",
+      "source_location": "L73",
+      "weight": 1.0,
+      "source": "bin_activate_ps1",
+      "target": "bin_activate_global_deactivate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "bin/Activate.ps1",
+      "source_location": "L131",
+      "weight": 1.0,
+      "source": "bin_activate_ps1",
+      "target": "bin_activate_get_pyvenvconfig",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "bin/Activate.ps1",
+      "source_location": "L228",
+      "weight": 1.0,
+      "source": "bin_activate_ps1",
+      "target": "bin_activate_global_old_virtual_prompt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "bin/Activate.ps1",
+      "source_location": "L232",
+      "weight": 1.0,
+      "source": "bin_activate_ps1",
+      "target": "bin_activate_global_prompt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/utils.py",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "features_utils_py",
+      "target": "features_utils_attemptsending",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "features/btc_mvrv/tasks.py",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "btc_mvrv_tasks_ping_mvrv",
+      "target": "features_utils_attemptsending"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "features/revolut_dca/tasks.py",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "revolut_dca_tasks_run_dca_logic",
+      "target": "features_utils_attemptsending"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "features/exchange_rate/tasks.py",
+      "source_location": "L50",
+      "weight": 1.0,
+      "source": "exchange_rate_tasks_ping_rates",
+      "target": "features_utils_attemptsending"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/btc_mvrv/tasks.py",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "features_btc_mvrv_tasks_py",
+      "target": "btc_mvrv_tasks_ping_mvrv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/btc_mvrv/tasks.py",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "features_btc_mvrv_tasks_py",
+      "target": "btc_mvrv_tasks_before_ping_mvrv_loop",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/btc_mvrv/tasks.py",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "features_btc_mvrv_tasks_py",
+      "target": "btc_mvrv_tasks_setup_tasks",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "features/btc_mvrv/__init__.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "features_btc_mvrv_init_py",
+      "target": "features_btc_mvrv_tasks_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_main.py",
+      "source_location": "L47",
+      "weight": 1.0,
+      "source": "tests_test_main_test_ping_mvrv",
+      "target": "btc_mvrv_tasks_ping_mvrv"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/btc_mvrv/__init__.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "features_btc_mvrv_init_py",
+      "target": "btc_mvrv_init_setup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "features/revolut_dca/tasks.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "features_revolut_dca_tasks_py",
+      "target": "features_revolut_dca_utils_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/revolut_dca/tasks.py",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "features_revolut_dca_tasks_py",
+      "target": "revolut_dca_tasks_run_dca_logic",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/revolut_dca/tasks.py",
+      "source_location": "L81",
+      "weight": 1.0,
+      "source": "features_revolut_dca_tasks_py",
+      "target": "revolut_dca_tasks_revolut_dca_task",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/revolut_dca/tasks.py",
+      "source_location": "L96",
+      "weight": 1.0,
+      "source": "features_revolut_dca_tasks_py",
+      "target": "revolut_dca_tasks_before_revolut_dca_task",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/revolut_dca/tasks.py",
+      "source_location": "L109",
+      "weight": 1.0,
+      "source": "features_revolut_dca_tasks_py",
+      "target": "revolut_dca_tasks_setup_tasks",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "features/revolut_dca/__init__.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "features_revolut_dca_init_py",
+      "target": "features_revolut_dca_tasks_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "features/revolut_dca/tasks.py",
+      "source_location": "L92",
+      "weight": 1.0,
+      "source": "revolut_dca_tasks_revolut_dca_task",
+      "target": "revolut_dca_tasks_run_dca_logic",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "features/revolut_dca/tasks.py",
+      "source_location": "L86",
+      "weight": 1.0,
+      "source": "revolut_dca_tasks_revolut_dca_task",
+      "target": "revolut_dca_utils_is_execution_day"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_revolut.py",
+      "source_location": "L64",
+      "weight": 1.0,
+      "source": "tests_test_revolut_test_revolut_dca_task_skips_if_not_sunday",
+      "target": "revolut_dca_tasks_revolut_dca_task"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_revolut.py",
+      "source_location": "L96",
+      "weight": 1.0,
+      "source": "tests_test_revolut_test_revolut_dca_task_runs_on_sunday",
+      "target": "revolut_dca_tasks_revolut_dca_task"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_revolut.py",
+      "source_location": "L133",
+      "weight": 1.0,
+      "source": "tests_test_revolut_test_revolut_dca_task_skips_if_firebase_says_so",
+      "target": "revolut_dca_tasks_revolut_dca_task"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_revolut.py",
+      "source_location": "L168",
+      "weight": 1.0,
+      "source": "tests_test_revolut_test_revolut_dca_task_insufficient_balance",
+      "target": "revolut_dca_tasks_revolut_dca_task"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "features/revolut_dca/tasks.py",
+      "source_location": "L101",
+      "weight": 1.0,
+      "source": "revolut_dca_tasks_before_revolut_dca_task",
+      "target": "revolut_dca_utils_get_seconds_to_next_execution_hour"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "features/revolut_dca/handlers.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "features_revolut_dca_handlers_py",
+      "target": "features_revolut_dca_utils_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/revolut_dca/handlers.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "features_revolut_dca_handlers_py",
+      "target": "revolut_dca_handlers_on_message",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/revolut_dca/handlers.py",
+      "source_location": "L51",
+      "weight": 1.0,
+      "source": "features_revolut_dca_handlers_py",
+      "target": "revolut_dca_handlers_setup_handlers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "features/revolut_dca/__init__.py",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "features_revolut_dca_init_py",
+      "target": "features_revolut_dca_handlers_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "features/revolut_dca/handlers.py",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "revolut_dca_handlers_on_message",
+      "target": "revolut_dca_utils_get_upcoming_execution_date_str"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/revolut_dca/__init__.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "features_revolut_dca_init_py",
+      "target": "revolut_dca_init_setup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/revolut_dca/utils.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "features_revolut_dca_utils_py",
+      "target": "revolut_dca_utils_get_next_execution_datetime",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/revolut_dca/utils.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "features_revolut_dca_utils_py",
+      "target": "revolut_dca_utils_get_upcoming_execution_date_str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/revolut_dca/utils.py",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "features_revolut_dca_utils_py",
+      "target": "revolut_dca_utils_is_execution_day",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/revolut_dca/utils.py",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "features_revolut_dca_utils_py",
+      "target": "revolut_dca_utils_get_seconds_to_next_execution_hour",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "features/revolut_dca/utils.py",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "revolut_dca_utils_get_upcoming_execution_date_str",
+      "target": "revolut_dca_utils_get_next_execution_datetime",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/logging/handler.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "features_logging_handler_py",
+      "target": "logging_handler_discordhandler",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "features/logging/__init__.py",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "features_logging_init_py",
+      "target": "features_logging_handler_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "features/logging/handler.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "logging_handler_discordhandler",
+      "target": "logging_handler_discordhandler_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "features/logging/handler.py",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "logging_handler_discordhandler",
+      "target": "logging_handler_discordhandler_emit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "features/logging/handler.py",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "logging_handler_discordhandler",
+      "target": "logging_handler_discordhandler_wait_and_flush",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "features/logging/handler.py",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "logging_handler_discordhandler",
+      "target": "logging_handler_discordhandler_flush_buffer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "features/logging/__init__.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "logging_init_setup",
+      "target": "logging_handler_discordhandler"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "features/logging/handler.py",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "logging_handler_discordhandler_emit",
+      "target": "logging_handler_discordhandler_wait_and_flush",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "features/logging/handler.py",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "logging_handler_discordhandler_wait_and_flush",
+      "target": "logging_handler_discordhandler_flush_buffer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/logging/__init__.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "features_logging_init_py",
+      "target": "logging_init_setup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/exchange_rate/tasks.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "features_exchange_rate_tasks_py",
+      "target": "exchange_rate_tasks_ping_rates",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/exchange_rate/tasks.py",
+      "source_location": "L61",
+      "weight": 1.0,
+      "source": "features_exchange_rate_tasks_py",
+      "target": "exchange_rate_tasks_before_ping_rates_loop",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/exchange_rate/tasks.py",
+      "source_location": "L68",
+      "weight": 1.0,
+      "source": "features_exchange_rate_tasks_py",
+      "target": "exchange_rate_tasks_setup_tasks",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "features/exchange_rate/__init__.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "features_exchange_rate_init_py",
+      "target": "features_exchange_rate_tasks_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_main.py",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "tests_test_main_test_ping_rates",
+      "target": "exchange_rate_tasks_ping_rates"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/exchange_rate/handlers.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "features_exchange_rate_handlers_py",
+      "target": "exchange_rate_handlers_on_message",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/exchange_rate/handlers.py",
+      "source_location": "L74",
+      "weight": 1.0,
+      "source": "features_exchange_rate_handlers_py",
+      "target": "exchange_rate_handlers_setup_handlers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "features/exchange_rate/__init__.py",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "features_exchange_rate_init_py",
+      "target": "features_exchange_rate_handlers_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/exchange_rate/__init__.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "features_exchange_rate_init_py",
+      "target": "exchange_rate_init_setup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/conftest.py",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "tests_conftest_py",
+      "target": "tests_conftest_firebase_mock",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_exchange.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "tests_test_exchange_py",
+      "target": "tests_test_exchange_test_on_message_set_rate_default",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_exchange.py",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "tests_test_exchange_py",
+      "target": "tests_test_exchange_test_on_message_get_rate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_revolut.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "tests_test_revolut_py",
+      "target": "tests_test_revolut_dummy_pem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_revolut.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "tests_test_revolut_py",
+      "target": "tests_test_revolut_test_revolut_get_gbp_balance_success",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_revolut.py",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "tests_test_revolut_py",
+      "target": "tests_test_revolut_test_revolut_place_order_success",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_revolut.py",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "tests_test_revolut_py",
+      "target": "tests_test_revolut_test_revolut_dca_task_skips_if_not_sunday",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_revolut.py",
+      "source_location": "L69",
+      "weight": 1.0,
+      "source": "tests_test_revolut_py",
+      "target": "tests_test_revolut_test_revolut_dca_task_runs_on_sunday",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_revolut.py",
+      "source_location": "L106",
+      "weight": 1.0,
+      "source": "tests_test_revolut_py",
+      "target": "tests_test_revolut_test_revolut_dca_task_skips_if_firebase_says_so",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_revolut.py",
+      "source_location": "L148",
+      "weight": 1.0,
+      "source": "tests_test_revolut_py",
+      "target": "tests_test_revolut_test_revolut_dca_task_insufficient_balance",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_revolut.py",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "tests_test_revolut_test_revolut_get_gbp_balance_success",
+      "target": "external_revolut_revolutapi"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_revolut.py",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "tests_test_revolut_test_revolut_place_order_success",
+      "target": "external_revolut_revolutapi"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_http_client.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "tests_test_http_client_py",
+      "target": "tests_test_http_client_test_request_success",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_http_client.py",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "tests_test_http_client_py",
+      "target": "tests_test_http_client_test_request_default_timeout",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_http_client.py",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "tests_test_http_client_py",
+      "target": "tests_test_http_client_test_request_custom_timeout",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_http_client.py",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "tests_test_http_client_py",
+      "target": "tests_test_http_client_test_retry_configuration",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_http_client.py",
+      "source_location": "L48",
+      "weight": 1.0,
+      "source": "tests_test_http_client_py",
+      "target": "tests_test_http_client_test_custom_retry_config_integration",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_http_client.py",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "tests_test_http_client_rationale_32",
+      "target": "tests_test_http_client_test_retry_configuration",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_http_client.py",
+      "source_location": "L49",
+      "weight": 1.0,
+      "source": "tests_test_http_client_rationale_49",
+      "target": "tests_test_http_client_test_custom_retry_config_integration",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_external.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "tests_test_external_py",
+      "target": "tests_test_external_test_apilayer_get_rate_success",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_external.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "tests_test_external_py",
+      "target": "tests_test_external_test_binance_get_btc_price_success",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_external.py",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "tests_test_external_py",
+      "target": "tests_test_external_test_blockchain_get_mvrv_success",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_external.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "tests_test_external_test_apilayer_get_rate_success",
+      "target": "external_apilayer_exchangeapi"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_external.py",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "tests_test_external_test_binance_get_btc_price_success",
+      "target": "external_binance_binanceapi"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_external.py",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "tests_test_external_test_blockchain_get_mvrv_success",
+      "target": "external_blockchain_blockchain"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_main.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "tests_test_main_py",
+      "target": "tests_test_main_test_ping_rates",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_main.py",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "tests_test_main_py",
+      "target": "tests_test_main_test_ping_mvrv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_firebase.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "tests_test_firebase_py",
+      "target": "tests_test_firebase_test_firebase_set_profile_rates",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_firebase.py",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "tests_test_firebase_py",
+      "target": "tests_test_firebase_test_firebase_get_profile_rates_exists",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_firebase.py",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "tests_test_firebase_py",
+      "target": "tests_test_firebase_test_firebase_dca_skip_decision",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_firebase.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "tests_test_firebase_test_firebase_set_profile_rates",
+      "target": "external_firebase_firebase"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_firebase.py",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "tests_test_firebase_test_firebase_get_profile_rates_exists",
+      "target": "external_firebase_firebase"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_firebase.py",
+      "source_location": "L40",
+      "weight": 1.0,
+      "source": "tests_test_firebase_test_firebase_dca_skip_decision",
+      "target": "external_firebase_firebase"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "external/http_client.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "external_http_client_py",
+      "target": "external_http_client_loggingretry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "external/http_client.py",
+      "source_location": "L40",
+      "weight": 1.0,
+      "source": "external_http_client_py",
+      "target": "external_http_client_get_retry_session",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "external/http_client.py",
+      "source_location": "L70",
+      "weight": 1.0,
+      "source": "external_http_client_py",
+      "target": "external_http_client_request",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "external/http_client.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "external_http_client_loggingretry",
+      "target": "retry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "external/http_client.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "external_http_client_loggingretry",
+      "target": "external_http_client_loggingretry_increment",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "external/http_client.py",
+      "source_location": "L51",
+      "weight": 1.0,
+      "source": "external_http_client_get_retry_session",
+      "target": "external_http_client_loggingretry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "external/http_client.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "external_http_client_rationale_10",
+      "target": "external_http_client_loggingretry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "external/http_client.py",
+      "source_location": "L86",
+      "weight": 1.0,
+      "source": "external_http_client_request",
+      "target": "external_http_client_get_retry_session",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "external/http_client.py",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "external_http_client_rationale_46",
+      "target": "external_http_client_get_retry_session",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "external/http_client.py",
+      "source_location": "L71",
+      "weight": 1.0,
+      "source": "external_http_client_rationale_71",
+      "target": "external_http_client_request",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "external/Revolut.py",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "external_revolut_py",
+      "target": "external_revolut_revolutapi",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "external/Revolut.py",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "external_revolut_revolutapi",
+      "target": "external_revolut_revolutapi_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "external/Revolut.py",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "external_revolut_revolutapi",
+      "target": "external_revolut_revolutapi_get_signature",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "external/Revolut.py",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "external_revolut_revolutapi",
+      "target": "external_revolut_revolutapi_get_balances",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "external/Revolut.py",
+      "source_location": "L56",
+      "weight": 1.0,
+      "source": "external_revolut_revolutapi",
+      "target": "external_revolut_revolutapi_get_gbp_balance",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "external/Revolut.py",
+      "source_location": "L65",
+      "weight": 1.0,
+      "source": "external_revolut_revolutapi",
+      "target": "external_revolut_revolutapi_place_order",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "external/Revolut.py",
+      "source_location": "L40",
+      "weight": 1.0,
+      "source": "external_revolut_revolutapi_get_balances",
+      "target": "external_revolut_revolutapi_get_signature",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "external/Revolut.py",
+      "source_location": "L93",
+      "weight": 1.0,
+      "source": "external_revolut_revolutapi_place_order",
+      "target": "external_revolut_revolutapi_get_signature",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "external/Revolut.py",
+      "source_location": "L57",
+      "weight": 1.0,
+      "source": "external_revolut_revolutapi_get_gbp_balance",
+      "target": "external_revolut_revolutapi_get_balances",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "external/Blockchain.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "external_blockchain_py",
+      "target": "external_blockchain_blockchain",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "external/Blockchain.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "external_blockchain_blockchain",
+      "target": "external_blockchain_blockchain_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "external/Blockchain.py",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "external_blockchain_blockchain",
+      "target": "external_blockchain_blockchain_call_blockchain_com_chart_api",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "external/Blockchain.py",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "external_blockchain_blockchain",
+      "target": "external_blockchain_blockchain_get_mvrv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "external/Blockchain.py",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "external_blockchain_blockchain_get_mvrv",
+      "target": "external_blockchain_blockchain_call_blockchain_com_chart_api",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "external/Firebase.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "external_firebase_py",
+      "target": "external_firebase_firebase",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "external/Firebase.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "external_firebase_firebase",
+      "target": "external_firebase_firebase_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "external/Firebase.py",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "external_firebase_firebase",
+      "target": "external_firebase_firebase_get_profile_collection",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "external/Firebase.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "external_firebase_firebase",
+      "target": "external_firebase_firebase_set_profile_rates",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "external/Firebase.py",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "external_firebase_firebase",
+      "target": "external_firebase_firebase_get_profile_rates",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "external/Firebase.py",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "external_firebase_firebase",
+      "target": "external_firebase_firebase_get_profile_rates_less_than",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "external/Firebase.py",
+      "source_location": "L42",
+      "weight": 1.0,
+      "source": "external_firebase_firebase",
+      "target": "external_firebase_firebase_get_latest_mvrv_timestamp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "external/Firebase.py",
+      "source_location": "L49",
+      "weight": 1.0,
+      "source": "external_firebase_firebase",
+      "target": "external_firebase_firebase_set_latest_mvrv_timestamp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "external/Firebase.py",
+      "source_location": "L56",
+      "weight": 1.0,
+      "source": "external_firebase_firebase",
+      "target": "external_firebase_firebase_is_for_property_id_pinged",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "external/Firebase.py",
+      "source_location": "L63",
+      "weight": 1.0,
+      "source": "external_firebase_firebase",
+      "target": "external_firebase_firebase_save_for_property_id",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "external/Firebase.py",
+      "source_location": "L67",
+      "weight": 1.0,
+      "source": "external_firebase_firebase",
+      "target": "external_firebase_firebase_get_dca_skip_decision",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "external/Firebase.py",
+      "source_location": "L74",
+      "weight": 1.0,
+      "source": "external_firebase_firebase",
+      "target": "external_firebase_firebase_set_dca_skip_decision",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "external/Firebase.py",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "external_firebase_firebase_set_profile_rates",
+      "target": "external_firebase_firebase_get_profile_collection",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "external/Firebase.py",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "external_firebase_firebase_get_profile_rates",
+      "target": "external_firebase_firebase_get_profile_collection",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "external/Firebase.py",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "external_firebase_firebase_get_profile_rates_less_than",
+      "target": "external_firebase_firebase_get_profile_collection",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "external/Binance.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "external_binance_py",
+      "target": "external_binance_binanceapi",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "external/Binance.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "external_binance_binanceapi",
+      "target": "external_binance_binanceapi_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "external/Binance.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "external_binance_binanceapi",
+      "target": "external_binance_binanceapi_call_average_price_by_symbol",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "external/Binance.py",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "external_binance_binanceapi",
+      "target": "external_binance_binanceapi_get_btc_price",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "external/Binance.py",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "external_binance_binanceapi_get_btc_price",
+      "target": "external_binance_binanceapi_call_average_price_by_symbol",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "external/ApiLayer.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "external_apilayer_py",
+      "target": "external_apilayer_exchangeapi",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "external/ApiLayer.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "external_apilayer_exchangeapi",
+      "target": "external_apilayer_exchangeapi_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "external/ApiLayer.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "external_apilayer_exchangeapi",
+      "target": "external_apilayer_exchangeapi_get_rates",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "external/ApiLayer.py",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "external_apilayer_exchangeapi",
+      "target": "external_apilayer_exchangeapi_get_rate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "external/ApiLayer.py",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "external_apilayer_exchangeapi_get_rate",
+      "target": "external_apilayer_exchangeapi_get_rates",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "main.py",
+      "source": "main_on_message",
+      "target": "exchange_rate_on_message"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "main.py",
+      "source": "main_on_message",
+      "target": "revolut_dca_on_message"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "features/exchange_rate/handlers.py",
+      "source": "exchange_rate_on_message",
+      "target": "setup_exchange_pairs"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "features/exchange_rate/tasks.py",
+      "source": "exchange_rate_ping_rates",
+      "target": "utils_attemptsending"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "features/btc_mvrv/tasks.py",
+      "source": "btc_mvrv_ping_mvrv",
+      "target": "utils_attemptsending"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "features/revolut_dca/tasks.py",
+      "source": "revolut_dca_run_dca_logic",
+      "target": "utils_attemptsending"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "features/exchange_rate/__init__.py",
+      "source": "exchange_rate_ping_rates",
+      "target": "exchange_rate_on_message"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "tests/conftest.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "firebase_firebase",
+      "target": "conftest_firebase_mock"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "external/http_client.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "http_client_get_retry_session",
+      "target": "http_client_loggingretry"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "external/http_client.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "http_client_request",
+      "target": "http_client_get_retry_session"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "external/Revolut.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "revolut_revolutapi",
+      "target": "http_client_request"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "external/Blockchain.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "blockchain_blockchain",
+      "target": "http_client_request"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "external/Binance.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "binance_binanceapi",
+      "target": "http_client_request"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "external/ApiLayer.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "apilayer_exchangeapi",
+      "target": "http_client_request"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "external/Revolut.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "revolut_revolutapi",
+      "target": "apilayer_exchangeapi"
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "bot_feature_initialization",
+      "label": "Bot Feature Initialization Flow",
+      "nodes": [
+        "logging_setup",
+        "exchange_rate_setup",
+        "btc_mvrv_setup",
+        "revolut_dca_setup"
+      ],
+      "relation": "form",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "main.py"
+    },
+    {
+      "id": "external_api_clients",
+      "label": "External API Client Layer",
+      "nodes": [
+        "revolut_revolutapi",
+        "blockchain_blockchain",
+        "binance_binanceapi",
+        "apilayer_exchangeapi"
+      ],
+      "relation": "implement",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "external/"
+    },
+    {
+      "id": "resilient_http_stack",
+      "label": "Resilient HTTP Communication",
+      "nodes": [
+        "http_client_request",
+        "http_client_get_retry_session",
+        "http_client_loggingretry"
+      ],
+      "relation": "form",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "external/http_client.py"
+    }
+  ],
+  "built_at_commit": "5b51c171deb7f3f74ff3d27870aa8668c9d3ac14"
+}
